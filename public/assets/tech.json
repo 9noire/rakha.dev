@@ -1,0 +1,16 @@
+[
+  { "name": "React", "category": "Framework" },
+  { "name": "Redux", "category": "Framework" },
+  { "name": "Vite", "category": "Framework" },
+  { "name": "TypeScript", "category": "Language" },
+  { "name": "Supabase", "category": "DevOps" },
+  { "name": "Firebase", "category": "DevOps" },
+  { "name": "TailwindCSS", "category": "Framework" },
+  { "name": "Bash", "category": "Language" },
+  { "name": "Python", "category": "Language" },
+  { "name": "Django", "category": "Framework" },
+  { "name": "Node.js", "category": "Framework" },
+  { "name": "Git", "category": "DevOps" },
+  { "name": "Postman", "category": "Tools" },
+  { "name": "Linux", "category": "DevOps" }
+]

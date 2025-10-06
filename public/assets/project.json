@@ -1,0 +1,23 @@
+[
+  {
+    "title": "LaporinAja",
+    "description": "Public complaint reporting platform with encrypted user identity and reward system.",
+    "image": "/assets/laporinaja.png",
+    "link": "https://laporinaja-phi.vercel.app/",
+    "technology": ["React", "TailwindCSS", "Supabase"]
+  },
+{
+  "title": "SnapMind",
+  "description": "A blog platform for sharing ideas and community interactions, developed as a CRUD website project.",
+  "image": "/assets/snapmind.png",
+  "link": "https://github.com/rakhaafd/snapmind-blog",
+  "technology": ["PHP", "MariaDB", "HTML5", "CSS3", "JavaScript"]
+},
+  {
+  "title": "Cineview",
+  "description": "A movie rating website featuring user comments and an integrated chatbot for personalized film recommendations.",
+  "image": "/assets/cineview.png",
+  "link": "https://cineview-blush.vercel.app/",
+  "technology": ["Firebase", "TailwindCSS", "jQuery"]
+}
+]
