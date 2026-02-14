@@ -46,7 +46,7 @@ export default function App() {
         isHorizontal,
         duration: 6 + Math.random() * 4, // slow
         delay: Math.random() * 4,
-        opacity: 0.25 + Math.random() * 0.1, // soft
+        opacity: 0.35 + Math.random() * 0.3, // soft
         position: Math.random() * 100,
       };
     });
@@ -58,7 +58,7 @@ export default function App() {
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[var(--color-bg)]" />
 
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(232,255,155,0.02)_1px,transparent_1.5px),linear-gradient(to_right,rgba(232,255,155,0.02)_1px,transparent_1.5px)] bg-[size:80px_80px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(232,255,155,0.02)_1px,transparent_1.5px),linear-gradient(to_right,rgba(232,255,155,0.03)_1px,transparent_1.5px)] bg-[size:80px_80px]" />
 
           <div className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-[var(--color-accent)] rounded-full mix-blend-soft-light blur-[140px] opacity-[0.02]" />
           <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-[var(--color-accent-muted)] rounded-full mix-blend-soft-light blur-[140px] opacity-[0.015]" />

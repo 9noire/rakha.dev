@@ -49,7 +49,7 @@ export default function About() {
 
         <div className="flex justify-center md:justify-start gap-4 pt-4">
           <a
-            href="https://drive.google.com/file/d/1h6RDEdF-3BmN4X3z7TbuySdFkklKccEs/view?usp=sharing"
+            href="https://drive.google.com/file/d/1rzgOs5GhAO8XF33_UTTFiWIXFrhh2ZSF/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
