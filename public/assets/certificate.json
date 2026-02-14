@@ -1,25 +1,62 @@
-    [
+[
   {
-  "title": "Cisco IT Essentials",
-  "issuer": "Cisco Networking Academy",
-  "date": "Feb 2024",
-  "image": "/assets/cert1.png",
-  "link": "https://drive.google.com/file/d/1rXD4mv8uWnnP-TRpso8aEa6bNW8bj1iY/view?usp=sharing"
-}
-,
+    "id": 1,
+    "title": "2nd Place – Web Development Competition",
+    "issuer": "UNSIKA",
+    "date": "2025/07/13",
+    "image": "/assets/certificate/cert3.png",
+    "link": "https://drive.google.com/file/d/1av-oDEsR_HgIHBSB9Vs_EXVqwAGG164P/view?usp=drive_link",
+    "category": ["Programming", "Awarding"],
+    "details": "Awarded 2nd Place in a Web Development Competition organized by UNSIKA, demonstrating strong capabilities in building responsive interfaces, integrating backend systems, and presenting a complete web solution under competitive conditions."
+  },
   {
-  "title": "Fundamentals of Web Programming",
-  "issuer": "Dicoding Indonesia",
-  "date": "October 2023",
-  "image": "/assets/cert2.png",
-  "link": "https://drive.google.com/file/d/1BjYAfW3PA-MAbJQCQ7IrD1_L5w5SnFBl/view?usp=drive_link"
-}
-,
+    "id": 2,
+    "title": "3rd Place XXXIV Web Technologies - Semarang",
+    "issuer": "MKKS Kota Semarang",
+    "date": "2026/02/13",
+    "image": "/assets/certificate/lks.jpg",
+    "link": "https://drive.google.com/file/d/1l30vDvadT7ZH_BWOLQHAWsfFM_Wc_Xmu/view?usp=sharing",
+    "category": ["Programming", "Awarding"],
+    "details": "Secured 3rd Place in the XXXIV Web Technologies competition at the Semarang city level, showcasing technical proficiency in modern web development, structured coding practices, and effective problem-solving within a timed environment."
+  },
   {
-  "title": "2nd Place – Web Development Competition",
-  "issuer": "UNSIKA",
-  "date": "July 2025",
-  "image": "/assets/cert3.png",
-  "link": "https://drive.google.com/file/d/1av-oDEsR_HgIHBSB9Vs_EXVqwAGG164P/view?usp=drive_link" 
-}
+    "id": 3,
+    "title": "3rd Place CTF Competition",
+    "issuer": "Badan Sandi dan Siber Negara",
+    "date": "2025/10/22",
+    "image": "/assets/certificate/cert4.png",
+    "link": "https://drive.google.com/file/d/1k7trPwNxQ7IqlQLaGKLrUL7b1ucW48L_/view?usp=sharing",
+    "category": ["Cyber Security", "Awarding"],
+    "details": "Achieved 3rd Place in a Capture The Flag (CTF) cybersecurity competition organized by Badan Sandi dan Siber Negara, demonstrating analytical skills in cryptography, web exploitation, digital forensics, and secure system analysis."
+  },
+  {
+    "id": 4,
+    "title": "Laravel Programming",
+    "issuer": "Digiup Telkom",
+    "date": "2025/12/22",
+    "image": "/assets/certificate/cert5.png",
+    "link": "https://drive.google.com/file/d/1E8lY7kLoFyROgU8sAUBoMORxUOFN9bs-/view",
+    "category": ["Programming", "Training"],
+    "details": "Completed an intensive Laravel Programming training program focused on backend development, MVC architecture, RESTful API design, database relationships, and best practices for building scalable and maintainable web applications."
+  },
+  {
+    "id": 6,
+    "title": "Digital Forensics",
+    "issuer": "Security Blue Team",
+    "date": "2026/01/09",
+    "image": "/assets/certificate/cert6.png",
+    "link": "https://drive.google.com/file/d/17eUDU7IKNkNYAPpE2gmwa_ZBsabUGcYZ/view?usp=sharing",
+    "category": ["Cyber Security", "Training"],
+    "details": "Completed a Digital Forensics certification program by Security Blue Team, focusing on incident investigation, evidence acquisition, log analysis, and forensic reporting. Gained hands-on experience in analyzing compromised systems and identifying indicators of compromise using industry-standard methodologies."
+  },
+  {
+    "id": 5,
+    "title": "Fundamentals of Web Programming",
+    "issuer": "Dicoding Indonesia",
+    "date": "2023/10/26",
+    "image": "/assets/certificate/cert2.png",
+    "link": "https://drive.google.com/file/d/1BjYAfW3PA-MAbJQCQ7IrD1_L5w5SnFBl/view?usp=drive_link",
+    "category": ["Programming", "Training"],
+    "details": "Completed a foundational web programming course covering HTML, CSS, and JavaScript, along with essential concepts such as responsive design, DOM manipulation, and structured web development practices."
+  }
 ]

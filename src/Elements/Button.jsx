@@ -1,9 +1,27 @@
-export default function Button({ text, icon, onClick, type = "button", className = "" }) {
+export default function Button({
+  text,
+  icon,
+  onClick,
+  type = "button",
+  variant = "solid", // default solid
+  className = "",
+}) {
+  const baseStyle =
+    "cursor-pointer text-md flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold transition-all duration-300";
+
+  const variants = {
+    solid:
+      "text-[var(--color-bg)] bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)]",
+
+    outline:
+      "bg-transparent border border-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover)] hover:text-black",
+  };
+
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`flex items-center gap-2 px-4 py-2 rounded-full text-[var(--color-bg)] bg-[var(--color-accent)] font-semibold hover:bg-[var(--color-accent-hover)] transition-all ${className}`}
+      className={`${baseStyle} ${variants[variant]} ${className}`}
     >
       {text}
       {icon && <span>{icon}</span>}

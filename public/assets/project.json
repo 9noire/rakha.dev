@@ -1,23 +1,84 @@
 [
   {
+    "id": 1,
     "title": "LaporinAja",
-    "description": "Public complaint reporting platform with encrypted user identity and reward system.",
-    "image": "/assets/laporinaja.png",
+    "description": "A public complaint platform with encrypted identities and a reward-based reporting system.",
+    "details": "LaporinAja is a civic-tech web application that allows users to report public facility issues securely with encrypted identities. The system includes categorized reports, image uploads, admin verification, and a point-based reward mechanism to encourage community participation and transparency.",
+    "image": ["/assets/project/laporinaja.png", "/assets/project/laporinaja2.png"],
     "link": "https://laporinaja-phi.vercel.app/",
-    "technology": ["React", "TailwindCSS", "Supabase"]
+    "github": "https://github.com/rakhaafd/laporinaja.git",
+    "technology": ["React.js", "Supabase"],
+    "date": "2025/06/28",
+    "type": "Team",
+    "role": "FrontEnd Developer",
+    "status": "Finished"
   },
-{
-  "title": "SnapMind",
-  "description": "A blog platform for sharing ideas and community interactions, developed as a CRUD website project.",
-  "image": "/assets/snapmind.png",
-  "link": "https://github.com/rakhaafd/snapmind-blog",
-  "technology": ["PHP", "MariaDB", "HTML5", "CSS3", "JavaScript"]
-},
   {
-  "title": "Cineview",
-  "description": "A movie rating website featuring user comments and an integrated chatbot for personalized film recommendations.",
-  "image": "/assets/cineview.png",
-  "link": "https://cineview-blush.vercel.app/",
-  "technology": ["Firebase", "TailwindCSS", "jQuery"]
-}
+    "id": 2,
+    "title": "Pemilos Stemba 2025",
+    "description": "A web-based voting system for the 2025 OSIS Chairperson and Vice Chairperson election.",
+    "details": "A digital election platform developed for SMK Negeri 7 Semarang to manage the 2025 OSIS election process. It features candidate profiles, secure authentication, one-time voting validation, and real-time vote counting to ensure transparency and efficiency.",
+    "image": ["/assets/project/pemilos.jpg", "/assets/project/pemilos2.jpg", "/assets/project/pemilos3.jpg"],
+    "github": "https://github.com/AhdanFirdaus/pemilos-stembase-2025",
+    "technology": ["Laravel", "React.js"],
+    "date": "2025/10/20",
+    "type": "Team",
+    "role": "FrontEnd Developer",
+    "status": "Finished"
+  },
+  {
+    "id": 3,
+    "title": "DevShare",
+    "description": "A developer community platform for sharing articles, learning, and connecting.",
+    "details": "DevShare is a full-stack community platform where developers can publish technical articles, interact through comments, and build connections. It includes user authentication, profile management, and a structured content system to support collaborative learning.",
+    "image": ["/assets/project/devshare.png", "/assets/project/devshare2.png"],
+    "github": "https://github.com/9noire/devshare.git",
+    "technology": ["MongoDB", "Node", "React.js"],
+    "date": "2025/12/07",
+    "type": "Individual",
+    "role": "Fullstack Developer",
+    "status": "Finished"
+  },
+  {
+    "id": 4,
+    "title": "Sipjako",
+    "description": "A system for managing and monitoring empty class hours efficiently.",
+    "details": "Sipjako is a scheduling management system designed to track and manage empty class hours in school. It provides role-based access, reporting features, and structured data management to improve academic coordination and monitoring.",
+    "image": ["/assets/project/sipjako.jpg", "/assets/project/sipjako2.png", "/assets/project/sipjako3.png"],
+    "link": "https://sipjako.vercel.app/",
+    "github": "https://github.com/rakhaafd/sipjako.git",
+    "technology": ["React.js", "Supabase"],
+    "date": "2025/06/28",
+    "type": "Individual",
+    "role": "Fullstack Developer",
+    "status": "Finished"
+  },
+  {
+    "id": 5,
+    "title": "BarterKita",
+    "description": "A digital barter platform for exchanging goods with user and transaction management.",
+    "details": "BarterKita is a web-based barter marketplace that enables users to list items and exchange goods without monetary transactions. The platform includes authentication, item management, and transaction tracking to ensure smooth and organized exchanges.",
+    "image": ["/assets/project/barterkita.png"],
+    "link": "https://barterkita.vercel.app/",
+    "github": "https://github.com/rakhaafd/barterkita.git",
+    "technology": ["React.js", "Supabase"],
+    "date": "2025/12/31",
+    "type": "Individual",
+    "role": "Fullstack Developer",
+    "status": "Finished"
+  },
+  {
+    "id": 6,
+    "title": "Cineview",
+    "description": "A movie and series rating platform with reviews and AI-based recommendations.",
+    "details": "Cineview is a movie and TV series rating website inspired by IMDb, allowing users to browse content, leave reviews, and interact through comments. It also integrates an AI-powered chatbot that provides personalized movie and series recommendations.",
+    "image": ["/assets/project/cineview.png", "/assets/project/cineview2.png"],
+    "link": "https://cineview-blush.vercel.app/",
+    "github": "https://github.com/rakhaafd/cineview/",
+    "technology": ["TailwindCSS", "JQuery"],
+    "date": "2025/09/02",
+    "type": "Team",
+    "role": "Fullstack Developer",
+    "status": "Finished"
+  }
 ]

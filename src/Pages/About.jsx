@@ -1,0 +1,69 @@
+import Button from "../Elements/Button";
+import profileImg from "../assets/img/photo.png";
+import { FaFileDownload } from "react-icons/fa";
+
+export default function About() {
+  const handleScrollToContact = () => {
+    const section = document.querySelector("#contact");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section
+      id="about"
+      className="text-[var(--color-text)] py-20 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12"
+    >
+      {/* ======= LEFT SIDE (IMAGE) ======= */}
+      <div className="flex-1 flex justify-center">
+        <div className="relative w-64 h-64 md:w-80 md:h-80">
+          {/* Profile Image dengan efek hover minimalis */}
+          <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[var(--color-accent)]/30 shadow-lg transition-all duration-300 hover:border-[var(--color-accent)] hover:shadow-[0_0_20px_rgba(232,255,155,0.2)]">
+            <img
+              src={profileImg}
+              alt="Rakha Profile"
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          
+          {/* Hanya satu efek subtle di belakang */}
+          <div className="absolute inset-0 rounded-full bg-[var(--color-accent)]/5 opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10 blur-md"></div>
+        </div>
+      </div>
+
+      {/* ======= RIGHT SIDE (CONTENT) ======= */}
+      <div className="flex-1 text-center md:text-left space-y-5">
+        <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">
+          <span className="relative z-10">About Me</span>
+          <span className="absolute left-0 bottom-2 w-full h-2 bg-[var(--color-accent)]/30"></span>
+        </h2>
+
+        <p className="text-gray-300 leading-relaxed sm:text-lg max-w-xl mx-auto md:mx-0">
+          Hello! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
+          a <span className="text-white font-medium">Software Engineer</span> and <span className="text-white font-medium">Cybersecurity Enthusiast</span> from{" "}
+          <span className="text-[var(--color-accent)] font-medium">SMK Negeri 7 Semarang</span>, majoring in{" "}
+          <span className="text-white font-medium">SIJA</span>.
+          <br /><br />
+          I'm passionate about building secure and scalable web applications that balance user experience and system architecture. 
+          I work across both frontend and backend to create structured, efficient, and reliable systems.
+          <br /> <br />
+          Beyond development, I explore cybersecurity to better understand how modern systems can be protected.
+        </p>
+
+        <div className="flex justify-center md:justify-start gap-4 pt-4">
+          <a
+            href="https://drive.google.com/file/d/1h6RDEdF-3BmN4X3z7TbuySdFkklKccEs/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button 
+              icon={<FaFileDownload className="text-lg"/>} 
+              text="Download CV" 
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Label from "./Elements/Label";
+import Label from "../Elements/Label";
 
 export default function Tech() {
   const [techData, setTechData] = useState([]);
@@ -22,8 +22,7 @@ export default function Tech() {
   }, {});
 
   return (
-    <section id="skills" className="py-20 bg-[#1F1F1F] text-white px-6 sm:px-12">
-      {/* Judul dengan garis di samping */}
+    <section id="skills" className="py-20 text-white px-6 sm:px-12">
       <div className="flex items-center mb-10">
         <h2 className="text-2xl font-bold mr-4">Skills</h2>
         <div className="flex-grow h-[1px] bg-[#E8FF9B]"></div>

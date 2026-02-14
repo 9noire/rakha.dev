@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
-/* ============ 🌗 THEME CONFIG ============ */
 :root {
-  /* Primary Palette */
   --color-bg: #1f1f1f;
   --color-bg-alt: #0f0f0f;
   --color-card: #181818;
@@ -12,19 +10,15 @@
   --color-accent-hover: #d4f66f;
   --color-accent-muted: #b7d45c;
 
-  /* Text Colors */
   --color-text: #ffffff;
   --color-subtext: #a1a1a1;
 
-  /* Border / Shadows */
   --color-border: #2a2a2a;
   --color-shadow: rgba(232, 255, 155, 0.1);
 }
 
-/* ============ 🌙 BASE STYLE ============ */
-
 * {
-  font-family: "Lexend Deca";
+  font-family: "Inter";
 }
 
 body {
@@ -34,7 +28,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ============ ✨ SCROLLBAR ============ */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -49,7 +42,6 @@ body {
   background: var(--color-accent-hover);
 }
 
-/* ============ ⚡ SECTIONS ============ */
 section {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -67,7 +59,6 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
-/* ============ 🧩 CUSTOM CLASSES ============ */
 .text-accent {
   color: var(--color-accent);
 }
@@ -85,10 +76,4 @@ a:hover {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   box-shadow: 0 0 10px var(--color-shadow);
-}
-
-/* ============ 💫 WAVY BACKGROUND ============ */
-.wave-bg {
-  background: linear-gradient(180deg, var(--color-accent) 0%, #d4f66f 100%);
-  clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);
 }
