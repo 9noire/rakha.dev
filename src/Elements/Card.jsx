@@ -8,15 +8,14 @@ export default function Card({
   children,
   tech = [],
   date,
-  id, // Tambahkan prop id
+  id,
   className = "",
   onReadMore,
-  onDetails, // Tambahkan prop onDetails
-  detailsPath // Tambahkan prop detailsPath untuk custom path
+  onDetails, 
+  detailsPath 
 }) {
   const navigate = useNavigate();
 
-  // Function to format date
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -25,10 +24,8 @@ export default function Card({
 
   const handleDetails = () => {
     if (onDetails) {
-      // Jika onDetails props disediakan, panggil fungsi tersebut
       onDetails(id);
     } else {
-      // Fallback ke navigasi default jika onDetails tidak disediakan
       const path = detailsPath || `/projects/${id}`;
       navigate(path);
     }
@@ -48,22 +45,16 @@ export default function Card({
         ${className}
       `}
     >
-      {/* Subtle gradient overlay on hover */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[var(--color-accent)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
-      {/* Inner glow border effect */}
       <div className="absolute inset-0 rounded-2xl border border-[var(--color-accent)]/0 group-hover:border-[var(--color-accent)]/20 transition-colors duration-500 pointer-events-none" />
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col h-full">
-        {/* Gambar Project */}
         <div className="w-full">
           {children}
         </div>
 
-        {/* Container untuk konten text */}
         <div className="p-6 flex flex-col flex-grow">
-          {/* Date - di atas title */}
           {date && (
             <div className="mb-2">
               <span className="text-xs text-gray-500 bg-[#242424] px-2 py-1 rounded-md border border-[#323232] inline-flex items-center gap-1 mb-3">
@@ -72,23 +63,19 @@ export default function Card({
             </div>
           )}
 
-          {/* Title */}
           {title && (
             <h3 className="text-white font-semibold text-lg mb-3 group-hover:text-[var(--color-accent)]/90 transition-colors duration-300">
               {title}
             </h3>
           )}
           
-          {/* Description */}
           {description && (
             <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4 flex-grow">
               {description}
             </p>
           )}
 
-          {/* Tech Stack dan Button dalam satu baris (flex) */}
           <div className="flex items-center justify-between gap-4 mt-2">
-            {/* Tech Stack - di kiri */}
             {tech.length > 0 && (
               <div className="flex flex-wrap gap-1.5">
                 {tech.slice(0, 2).map((item, i) => (
@@ -116,7 +103,6 @@ export default function Card({
               </div>
             )}
 
-            {/* Details Button - di kanan */}
             <Button
               text="Details"
               onClick={handleDetails}

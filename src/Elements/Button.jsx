@@ -3,7 +3,7 @@ export default function Button({
   icon,
   onClick,
   type = "button",
-  variant = "solid", // default solid
+  variant = "solid",
   className = "",
 }) {
   const baseStyle =

@@ -13,7 +13,6 @@ import ProjectDetail from "./Pages/Details/ProjectDetail";
 import MoreCertificates from "./Pages/More/Certificates";
 import CertificateDetail from "./Pages/Details/CertificateDetail";
 
-// Layout component untuk membungkus halaman dengan Navbar
 function PageLayout({ children, showFooter = true }) {
   return (
     <>
@@ -24,7 +23,6 @@ function PageLayout({ children, showFooter = true }) {
   );
 }
 
-// Komponen untuk halaman utama (berisi semua section)
 function MainPage() {
   return (
     <>
@@ -39,7 +37,6 @@ function MainPage() {
 }
 
 export default function App() {
-  // Generate subtle scan lines (tidak terlalu banyak)
   const scanLines = useMemo(() => {
     return [...Array(4)].map((_, i) => {
       const isHorizontal = Math.random() > 0.5;
@@ -47,9 +44,9 @@ export default function App() {
       return {
         id: i,
         isHorizontal,
-        duration: 6 + Math.random() * 4, // lebih slow
+        duration: 6 + Math.random() * 4, // slow
         delay: Math.random() * 4,
-        opacity: 0.25 + Math.random() * 0.1, // lebih soft
+        opacity: 0.25 + Math.random() * 0.1, // soft
         position: Math.random() * 100,
       };
     });
@@ -58,19 +55,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="relative bg-[var(--color-bg)] text-[var(--color-text)] min-h-screen overflow-x-hidden">
-        {/* Background */}
         <div className="fixed inset-0 overflow-hidden">
-          {/* Base background */}
           <div className="absolute inset-0 bg-[var(--color-bg)]" />
 
-          {/* Subtle grid */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(232,255,155,0.02)_1px,transparent_1.5px),linear-gradient(to_right,rgba(232,255,155,0.02)_1px,transparent_1.5px)] bg-[size:80px_80px]" />
 
-          {/* Accent flares (super soft) */}
           <div className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-[var(--color-accent)] rounded-full mix-blend-soft-light blur-[140px] opacity-[0.02]" />
           <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-[var(--color-accent-muted)] rounded-full mix-blend-soft-light blur-[140px] opacity-[0.015]" />
 
-          {/* Subtle Moving Scan Lines */}
           <div className="absolute inset-0 pointer-events-none">
             {scanLines.map((line) => (
               <div
@@ -94,7 +86,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Content dengan Routing */}
         <div className="relative z-10">
           <Routes>
             <Route 
@@ -140,7 +131,6 @@ export default function App() {
           </Routes>
         </div>
 
-        {/* Animations */}
         <style jsx>{`
           @keyframes scanHorizontal {
             0% { transform: translateX(-120%); }

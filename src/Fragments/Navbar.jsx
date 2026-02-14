@@ -27,16 +27,13 @@ export default function Navbar() {
 
     const sectionId = section.toLowerCase();
     
-    // Jika sedang di halaman utama
     if (location.pathname === '/') {
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } 
-    // Jika di halaman lain (projects, certificates, dll)
     else {
-      // Navigasi ke halaman utama dengan state
       navigate('/', { 
         state: { scrollTo: sectionId },
         replace: true 
@@ -44,12 +41,9 @@ export default function Navbar() {
     }
   };
 
-  // Effect untuk handle scroll ketika navigasi dari halaman lain
   useEffect(() => {
-    // Cek apakah ada state scrollTo dari navigasi
     if (location.state?.scrollTo && location.pathname === '/') {
       const sectionId = location.state.scrollTo;
-      // Gunakan setTimeout untuk memastikan elemen sudah di-render
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -57,7 +51,6 @@ export default function Navbar() {
         }
       }, 100);
       
-      // Clear state setelah digunakan
       navigate('/', { 
         state: {}, 
         replace: true 
@@ -67,7 +60,6 @@ export default function Navbar() {
 
   const isActive = (section) => {
     if (location.pathname !== '/') return false;
-    // Optional: bisa ditambahkan logic untuk menandai section yang aktif
     return false;
   };
 
@@ -78,7 +70,6 @@ export default function Navbar() {
           : 'bg-[var(--color-bg)]/60 backdrop-blur-sm'
     }`}>
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo dengan glass effect */}
         <h1 
           onClick={() => navigate('/')}
           className="text-xl font-bold relative group cursor-pointer"
@@ -89,7 +80,6 @@ export default function Navbar() {
           <span className="absolute -inset-1 bg-[var(--color-accent)]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
         </h1>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-1 text-sm font-medium">
           {['Home', 'About', 'Skills', 'Project', 'Certificates', 'Contact'].map((item) => (
             <li key={item}>
@@ -109,7 +99,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile Menu Button with glass effect */}
         <button 
           onClick={toggleMenu} 
           className="md:hidden focus:outline-none relative p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/30 transition-all duration-300"
@@ -126,7 +115,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown with glass effect */}
       <div 
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -153,7 +141,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Decorative bottom line with glass effect */}
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent" />
     </nav>
   );

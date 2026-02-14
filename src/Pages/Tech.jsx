@@ -14,7 +14,6 @@ export default function Tech() {
       .catch((err) => console.error(err));
   }, []);
 
-  // Kelompokkan berdasarkan kategori
   const grouped = techData.reduce((acc, item) => {
     if (!acc[item.category]) acc[item.category] = [];
     acc[item.category].push(item.name);

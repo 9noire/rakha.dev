@@ -15,10 +15,8 @@ export default function About() {
       id="about"
       className="text-[var(--color-text)] py-20 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12"
     >
-      {/* ======= LEFT SIDE (IMAGE) ======= */}
       <div className="flex-1 flex justify-center">
         <div className="relative w-64 h-64 md:w-80 md:h-80">
-          {/* Profile Image dengan efek hover minimalis */}
           <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[var(--color-accent)]/30 shadow-lg transition-all duration-300 hover:border-[var(--color-accent)] hover:shadow-[0_0_20px_rgba(232,255,155,0.2)]">
             <img
               src={profileImg}
@@ -27,12 +25,10 @@ export default function About() {
             />
           </div>
           
-          {/* Hanya satu efek subtle di belakang */}
           <div className="absolute inset-0 rounded-full bg-[var(--color-accent)]/5 opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10 blur-md"></div>
         </div>
       </div>
 
-      {/* ======= RIGHT SIDE (CONTENT) ======= */}
       <div className="flex-1 text-center md:text-left space-y-5">
         <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">
           <span className="relative z-10">About Me</span>

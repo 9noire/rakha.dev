@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { IoMdArrowForward } from "react-icons/io";
 import Button from "../Elements/Button";
 import { useNavigate } from "react-router-dom";
 
@@ -28,26 +29,22 @@ export default function Certificate() {
 
   return (
     <section id="certificates" className="relative py-20 px-6 sm:px-12 overflow-hidden">
-      {/* Background Decorative */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--color-accent)]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
       </div>
 
-      {/* Header */}
       <div className="flex items-center mb-20">
         <h2 className="text-2xl font-bold text-white mr-4">Certificates</h2>
         <div className="flex-grow h-[1px] bg-[var(--color-accent)]"></div>
       </div>
 
-      {/* Loading State */}
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
           <div className="w-16 h-16 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)] rounded-full animate-spin" />
         </div>
       ) : (
         <>
-          {/* Gallery Grid */}
           <div className="relative z-10 flex flex-wrap justify-center gap-6 max-w-7xl mx-auto mb-12">
             {certificates.slice(0, 3).map((cert, index) => (
               <div
@@ -82,11 +79,9 @@ export default function Certificate() {
             ))}
           </div>
 
-
-          {/* Button More Certificate */}
           <div className="relative z-10 flex justify-center">
             <Button
-              icon={<FaArrowRight className="text-lg" />}
+              icon={<IoMdArrowForward className="text-lg" />}
               text="More Certificate"
               variant="outline"
               onClick={() => navigate("/certificates")}

@@ -42,19 +42,16 @@ export default function ProjectDetail() {
     navigate("/projects");
   };
 
-  // Function to format date
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
-  // Function to get project type icon
   const getTypeIcon = (type) => {
     return type?.toLowerCase() === "team" ? <FaUsers /> : <FaUser />;
   };
 
-  // Image slider functions
   const nextImage = () => {
     if (project?.image && currentImageIndex < project.image.length - 1) {
       setCurrentImageIndex(currentImageIndex + 1);
@@ -71,7 +68,6 @@ export default function ProjectDetail() {
     setImageErrors(prev => ({ ...prev, [index]: true }));
   };
 
-  // Function to get the correct image path
   const getImagePath = (imagePath) => {
     if (imagePath.startsWith('http') || imagePath.startsWith('data:')) {
       return imagePath;
@@ -130,21 +126,17 @@ export default function ProjectDetail() {
   return (
     <section className="relative py-16 px-4 sm:py-20 sm:px-8 lg:px-12 min-h-screen">
       <div className="max-w-4xl mx-auto">
-        {/* Tombol Kembali */}
         <button
           onClick={handleBack}
-          className="flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300 mb-8 group"
+          className="mt-5 flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300 mb-8 group"
         >
           <MdArrowBack className="text-lg transition-transform" />
           <span>Back to Projects</span>
         </button>
 
-        {/* Main Content */}
         <div className="bg-gradient-to-b from-[#1e1e1e] to-[#181818] rounded-2xl border border-[#2a2a2a] overflow-hidden">
-          {/* Project Image Slider */}
           {images.length > 0 && (
             <div className="relative w-full h-[400px] group/image">
-              {/* Main Image */}
               {!hasImageError ? (
                 <img
                   src={getImagePath(currentImage)}
@@ -161,10 +153,8 @@ export default function ProjectDetail() {
                 </div>
               )}
 
-              {/* Navigation Arrows - Only show if multiple images */}
               {hasMultipleImages && (
                 <>
-                  {/* Left Arrow */}
                   <button
                     onClick={prevImage}
                     disabled={currentImageIndex === 0}
@@ -181,7 +171,6 @@ export default function ProjectDetail() {
                     <MdArrowBackIos className="text-xl" />
                   </button>
 
-                  {/* Right Arrow */}
                   <button
                     onClick={nextImage}
                     disabled={currentImageIndex === images.length - 1}
@@ -200,7 +189,6 @@ export default function ProjectDetail() {
                 </>
               )}
 
-              {/* Image Dots Indicator */}
               {hasMultipleImages && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                   {images.map((_, index) => (
@@ -221,9 +209,7 @@ export default function ProjectDetail() {
             </div>
           )}
 
-          {/* Content */}
           <div className="p-8 md:p-10">
-            {/* Header with Title and Status */}
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <h1 className="text-3xl md:text-4xl font-bold text-white">
                 {project.title}
@@ -236,9 +222,7 @@ export default function ProjectDetail() {
               )}
             </div>
 
-            {/* Meta Information Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              {/* Date */}
               {project.date && (
                 <div className="bg-[#242424] rounded-xl p-4 border border-[#323232] flex items-center gap-3">
                   <div>
@@ -248,7 +232,6 @@ export default function ProjectDetail() {
                 </div>
               )}
 
-              {/* Type */}
               {project.type && (
                 <div className="bg-[#242424] rounded-xl p-4 border border-[#323232] flex items-center gap-3">
                   <div>
@@ -258,7 +241,6 @@ export default function ProjectDetail() {
                 </div>
               )}
 
-              {/* Role */}
               {project.role && (
                 <div className="bg-[#242424] rounded-xl p-4 border border-[#323232] flex items-center gap-3">
                   <div>
@@ -269,7 +251,6 @@ export default function ProjectDetail() {
               )}
             </div>
 
-            {/* Description */}
             <div className="mb-8">
               <h2 className="text-white font-semibold text-lg mb-3">Description</h2>
               <p className="text-gray-400 leading-relaxed">
@@ -277,7 +258,6 @@ export default function ProjectDetail() {
               </p>
             </div>
 
-            {/* Details */}
             {project.details && (
               <div className="mb-8">
                 <h2 className="text-white font-semibold text-lg mb-3">Details</h2>
@@ -287,7 +267,6 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {/* Technology Stack */}
             {project.technology && project.technology.length > 0 && (
               <div className="mb-8">
                 <h2 className="text-white font-semibold text-lg mb-3">Technology Stack</h2>
@@ -304,7 +283,6 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-4 border-t border-[#2a2a2a]">
               {project.link && (
                 <Button

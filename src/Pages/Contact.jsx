@@ -13,12 +13,10 @@ export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
 
-  // Initialize EmailJS
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    // Clear status saat user mengetik ulang
     if (status.message) setStatus({ type: "", message: "" });
   };
 
@@ -27,7 +25,6 @@ export default function Contact() {
     setIsLoading(true);
     setStatus({ type: "", message: "" });
 
-    // Get current date and time
     const now = new Date();
     const date = now.toLocaleDateString('en-US', { 
       weekday: 'long', 
@@ -41,14 +38,13 @@ export default function Contact() {
       hour12: true 
     });
 
-    // Template parameters untuk EmailJS
     const templateParams = {
       name: form.name,
       email: form.email,
       message: form.message,
       date: date,
       time: time,
-      to_email: "rakhafausta07@gmail.com", // Email tujuan (anda)
+      to_email: "rakhafausta07@gmail.com",
     };
 
     try {
@@ -74,7 +70,6 @@ export default function Contact() {
     } finally {
       setIsLoading(false);
       
-      // Auto clear success message after 5 seconds
       if (status.type === "success") {
         setTimeout(() => {
           setStatus({ type: "", message: "" });
@@ -87,7 +82,6 @@ export default function Contact() {
     <section id="contact" className="py-20 px-6 sm:px-12">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: Contact Info */}
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-white mb-4">
               Get in <span className="text-[var(--color-accent)]">Touch</span>
@@ -99,7 +93,6 @@ export default function Contact() {
               about tech, feel free to drop a message.
             </p>
 
-            {/* Contact Details */}
             <div className="space-y-4 pt-4">
               <div className="flex items-center gap-4 p-4 bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] hover:border-[var(--color-accent)]/30 transition-all duration-300 group">
                 <div className="p-3 bg-[#2a2a2a] rounded-lg group-hover:bg-[#2a2a2a]/80">
@@ -123,11 +116,9 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right: Contact Form */}
           <div className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-2xl p-8 hover:border-[var(--color-accent)]/30 transition-all duration-300">
             <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
             
-            {/* Status Message */}
             {status.message && (
               <div className={`mb-6 p-4 rounded-xl text-sm ${
                 status.type === "success" 
