@@ -12,6 +12,7 @@ export default function MoreCertificates() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0,0)
     setIsLoading(true);
     fetch("/assets/certificate.json")
       .then((res) => {

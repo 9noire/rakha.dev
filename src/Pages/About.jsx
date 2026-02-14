@@ -32,7 +32,7 @@ export default function About() {
       <div className="flex-1 text-center md:text-left space-y-5">
         <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">
           <span className="relative z-10">About Me</span>
-          <span className="absolute left-0 bottom-2 w-full h-2 bg-[var(--color-accent)]/30"></span>
+          <span className="absolute left-0 bottom-2 w-full h-2 bg-[var(--color-accent)]/50"></span>
         </h2>
 
         <p className="text-gray-300 leading-relaxed sm:text-lg max-w-xl mx-auto md:mx-0">

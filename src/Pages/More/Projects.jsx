@@ -12,6 +12,7 @@ export default function Projects() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0,0)
     setIsLoading(true);
     fetch("/assets/project.json")
       .then((res) => {
