@@ -62,7 +62,7 @@ export default function Projects() {
       <div className="mt-5 max-w-7xl mx-auto mb-8">
         <button
           onClick={handleBack}
-          className="flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300"
+          className="cursor-pointer flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300"
         >
           <MdArrowBack className="text-lg" />
           <span>Back</span>

@@ -51,7 +51,7 @@ export default function Certificate() {
                 key={index}
                 className="flex-[1_1_320px] max-w-[420px] group relative overflow-hidden rounded-2xl"
               >
-                <div className="relative overflow-hidden rounded-2xl">
+                <div className="cursor-pointer relative overflow-hidden rounded-2xl">
                   <img
                     src={cert.image}
                     alt={cert.title}

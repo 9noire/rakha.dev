@@ -56,7 +56,7 @@ export default function MoreCertificates() {
       <div className="mt-5 max-w-7xl mx-auto mb-8">
         <button
           onClick={handleBack}
-          className="flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300"
+          className="cursor-pointer flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300"
         >
           <MdArrowBack className="text-lg" />
           <span>Back</span>
@@ -74,42 +74,43 @@ export default function MoreCertificates() {
         </div>
       ) : (
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap gap-6 justify-center">
             {certificates.map((certificate) => {
               const certId = certificate.id.toString();
               const hasImageError = imageErrors[certId];
               
               return (
-                <Card
-                  key={certId}
-                  id={certificate.id}
-                  title={certificate.title}
-                  description={`Issued by ${certificate.issuer}`}
-                  tech={certificate.category || []}
-                  date={certificate.date}
-                  onDetails={handleCertificateDetails}
-                  className="h-full flex flex-col"
-                >
-                  {certificate.image && !hasImageError ? (
-                    <img
-                      src={getImagePath(certificate.image)}
-                      alt={certificate.title}
-                      className="w-full h-48 object-cover rounded-t-lg"
-                      onError={(e) => {
-                        console.error(`Failed to load image: ${certificate.image}`);
-                        handleImageError(certId);
-                      }}
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center rounded-t-lg">
-                      <div className="text-center">
-                        <FaCertificate className="text-5xl text-gray-600 block mx-auto mb-2" />
-                        <span className="text-sm text-gray-500">Image not available</span>
+                <div key={certId} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] min-w-[300px] max-w-md">
+                  <Card
+                    id={certificate.id}
+                    title={certificate.title}
+                    description={`Issued by ${certificate.issuer}`}
+                    tech={certificate.category || []}
+                    date={certificate.date}
+                    onDetails={handleCertificateDetails}
+                    className="h-full flex flex-col"
+                  >
+                    {certificate.image && !hasImageError ? (
+                      <img
+                        src={getImagePath(certificate.image)}
+                        alt={certificate.title}
+                        className="w-full h-48 object-cover rounded-t-lg"
+                        onError={(e) => {
+                          console.error(`Failed to load image: ${certificate.image}`);
+                          handleImageError(certId);
+                        }}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center rounded-t-lg">
+                        <div className="text-center">
+                          <FaCertificate className="text-5xl text-gray-600 block mx-auto mb-2" />
+                          <span className="text-sm text-gray-500">Image not available</span>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </Card>
+                    )}
+                  </Card>
+                </div>
               );
             })}
           </div>

@@ -38,7 +38,7 @@ export default function CertificateDetail() {
   }, [id]);
 
   const handleBack = () => {
-    navigate("/projects");
+    navigate("/certificates");
   };
 
   const formatDate = (dateString) => {
@@ -108,7 +108,7 @@ export default function CertificateDetail() {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={handleBack}
-          className="mt-5 flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300 mb-8 group"
+          className="cursor-pointer mt-5 flex items-center gap-2 text-gray-400 hover:text-[var(--color-accent)] transition-colors duration-300 mb-8 group"
         >
           <MdArrowBack className="text-lg transition-transform" />
           <span>Back to Certificates</span>

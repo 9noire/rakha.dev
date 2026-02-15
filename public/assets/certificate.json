@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "2nd Place – Web Development Competition",
+    "title": "2nd Place Web Dev - Himsika",
     "issuer": "UNSIKA",
     "date": "2025/07/13",
     "image": "/assets/certificate/cert3.png",
@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "title": "3rd Place XXXIV Web Technologies - Semarang",
+    "title": "3rd Place LKS XXXIV Web Technologies - Semarang",
     "issuer": "MKKS Kota Semarang",
     "date": "2026/02/13",
     "image": "/assets/certificate/lks.jpg",
@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "title": "3rd Place CTF Competition",
+    "title": "3rd Place CTF Competition - WreckIT",
     "issuer": "Badan Sandi dan Siber Negara",
     "date": "2025/10/22",
     "image": "/assets/certificate/cert4.png",
@@ -40,7 +40,7 @@
     "details": "Completed an intensive Laravel Programming training program focused on backend development, MVC architecture, RESTful API design, database relationships, and best practices for building scalable and maintainable web applications."
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Digital Forensics",
     "issuer": "Security Blue Team",
     "date": "2026/01/09",
@@ -50,7 +50,27 @@
     "details": "Completed a Digital Forensics certification program by Security Blue Team, focusing on incident investigation, evidence acquisition, log analysis, and forensic reporting. Gained hands-on experience in analyzing compromised systems and identifying indicators of compromise using industry-standard methodologies."
   },
   {
-    "id": 5,
+    "id": 6,
+    "title": "Fundamentals of Cyber Security",
+    "issuer": "Cisco Networking Academy",
+    "date": "2026/15/02",
+    "image": "/assets/certificate/cert7.png",
+    "link": "https://drive.google.com/file/d/1QQBJV9ByhpfhxwqSRvIHZC-10-n-EKX6/view?usp=sharing",
+    "category": ["Cyber Security", "Training"],
+    "details": "Completed a foundational cybersecurity course covering key concepts such as network security, threat analysis, vulnerability assessment, and basic ethical hacking practices, along with hands-on exercises to understand and protect computer systems effectively."
+  },
+  {
+    "id": 7,
+    "title": "JavaScript Fundamentals",
+    "issuer": "Skilvul",
+    "date": "2023/10/26",
+    "image": "/assets/certificate/cert8.png",
+    "link": "https://drive.google.com/file/d/112dPLt2mcFHSumlbk2Oimv2fw-GlnivU/view?usp=sharing",
+    "category": ["Programming", "Training"],
+    "details": "Completed a JavaScript fundamentals course covering core concepts such as variables, data types, functions, loops, conditionals, events, and basic DOM manipulation, along with hands-on exercises to build interactive web features."
+  },
+  {
+    "id": 7,
     "title": "Fundamentals of Web Programming",
     "issuer": "Dicoding Indonesia",
     "date": "2023/10/26",
