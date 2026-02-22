@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { iconMap } from "../assets/iconMap";
 import Label from "../Elements/Label";
 
 export default function Tech() {
@@ -16,7 +17,7 @@ export default function Tech() {
 
   const grouped = techData.reduce((acc, item) => {
     if (!acc[item.category]) acc[item.category] = [];
-    acc[item.category].push(item.name);
+    acc[item.category].push(item);
     return acc;
   }, {});
 
@@ -31,15 +32,21 @@ export default function Tech() {
         {Object.entries(grouped).map(([category, items], idx) => (
           <div key={idx}>
             <Label text={category} className="text-base mb-2 capitalize" />
+
             <div className="flex flex-wrap gap-2">
-              {items.map((tech, i) => (
-                <span
-                  key={i}
-                  className="cursor-pointer bg-[#2A2A2A] text-gray-300 px-3 py-1 rounded-md text-sm font-medium hover:bg-[#E8FF9B]/10 transition-colors"
-                >
-                  {tech}
-                </span>
-              ))}
+              {items.map((tech, i) => {
+                const Icon = iconMap[tech.icon];
+
+                return (
+                  <span
+                    key={i}
+                    className="cursor-pointer flex items-center gap-2 bg-[#2A2A2A] text-gray-300 px-3 py-1 rounded-md text-sm font-medium hover:bg-[#E8FF9B]/10 transition-colors"
+                  >
+                    {Icon && <Icon size={16} />}
+                    {tech.name}
+                  </span>
+                );
+              })}
             </div>
           </div>
         ))}

@@ -1,17 +1,87 @@
 [
-  { "name": "Next.js", "category": "Framework" },
-  { "name": "Laravel", "category": "Framework" },
-  { "name": "MySQL", "category": "Database" },
-  { "name": "PostgreSQL", "category": "Database" },
-  { "name": "MongoDB", "category": "Database" },
-  { "name": "JavaScript", "category": "Language" },
-  { "name": "PHP", "category": "Language" },
-  { "name": "Python", "category": "Language" },
-  { "name": "Git", "category": "DevOps" },
-  { "name": "Docker", "category": "DevOps" },
-  { "name": "Digital Forensics", "category": "Cyber Security" },
-  { "name": "Visual Studio Code", "category": "Tools" },
-  { "name": "Postman", "category": "Tools" },
-  { "name": "Linux", "category": "Operating System" },
-  { "name": "Windows", "category": "Operating System" }
+  {
+    "name": "Next.js",
+    "category": "Framework",
+    "icon": "SiNextdotjs"
+  },
+  {
+    "name": "Laravel",
+    "category": "Framework",
+    "icon": "SiLaravel"
+  },
+  {
+    "name": "React",
+    "category": "Framework",
+    "icon": "SiReact"
+  },
+  {
+    "name": "MySQL",
+    "category": "Database",
+    "icon": "SiMysql"
+  },
+  {
+    "name": "PostgreSQL",
+    "category": "Database",
+    "icon": "SiPostgresql"
+  },
+  {
+    "name": "MongoDB",
+    "category": "Database",
+    "icon": "SiMongodb"
+  },
+  {
+    "name": "JavaScript",
+    "category": "Language",
+    "icon": "SiJavascript"
+  },
+  {
+    "name": "TypeScript",
+    "category": "Language",
+    "icon": "SiTypescript"
+  },
+  {
+    "name": "PHP",
+    "category": "Language",
+    "icon": "SiPhp"
+  },
+  {
+    "name": "Python",
+    "category": "Language",
+    "icon": "SiPython"
+  },
+  {
+    "name": "Git",
+    "category": "DevOps",
+    "icon": "SiGit"
+  },
+  {
+    "name": "Docker",
+    "category": "DevOps",
+    "icon": "SiDocker"
+  },
+  {
+    "name": "Digital Forensics",
+    "category": "Cyber Security",
+    "icon": "FaUserSecret"
+  },
+  {
+    "name": "Visual Studio Code",
+    "category": "Tools",
+    "icon": "VscVscode"
+  },
+  {
+    "name": "Postman",
+    "category": "Tools",
+    "icon": "SiPostman"
+  },
+  {
+    "name": "Linux",
+    "category": "Operating System",
+    "icon": "SiLinux"
+  },
+  {
+    "name": "Windows",
+    "category": "Operating System",
+    "icon": "FaWindows"
+  }
 ]
