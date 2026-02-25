@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { MdOpenInNew } from "react-icons/md";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,97 +8,86 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
+  const internalMenu = ['Home', 'About', 'Skills', 'Project', 'Certificates', 'Contact'];
+  const externalMenu = { name: 'Blog', url: 'https://medium.com/@rakhafausta07' };
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+  }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleNavigation = (e, section) => {
+  const handleNavigation = (e, item, type = 'internal') => {
     e.preventDefault();
     setIsOpen(false);
 
-    const sectionId = section.toLowerCase();
-    
+    if (type === 'external') {
+      window.open(item.url, '_blank');
+      return;
+    }
+
+    const sectionId = item.toLowerCase();
     if (location.pathname === '/') {
       const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } 
-    else {
-      navigate('/', { 
-        state: { scrollTo: sectionId },
-        replace: true 
-      });
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate('/', { state: { scrollTo: sectionId }, replace: true });
     }
   };
 
   useEffect(() => {
     if (location.state?.scrollTo && location.pathname === '/') {
-      const sectionId = location.state.scrollTo;
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-      
-      navigate('/', { 
-        state: {}, 
-        replace: true 
-      });
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+      navigate('/', { state: {}, replace: true });
     }
   }, [location, navigate]);
-
-  const isActive = (section) => {
-    if (location.pathname !== '/') return false;
-    return false;
-  };
 
   return (
     <nav className={`w-full fixed top-0 z-50 transition-all duration-300 ${
       scrolled 
-          ? 'bg-[var(--color-bg)]/80 backdrop-blur-md shadow-lg shadow-[var(--color-accent)]/5' 
-          : 'bg-[var(--color-bg)]/60 backdrop-blur-sm'
+        ? 'bg-[var(--color-bg)]/80 backdrop-blur-md shadow-lg shadow-[var(--color-accent)]/5' 
+        : 'bg-[var(--color-bg)]/60 backdrop-blur-sm'
     }`}>
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+
         <h1 
           onClick={() => navigate('/')}
           className="text-xl font-bold relative group cursor-pointer"
         >
-          <span className="relative z-10 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-hover)] bg-clip-text">
-            rakha.dev
-          </span>
-          <span className="absolute -inset-1 bg-[var(--color-accent)]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+          rakha.dev
         </h1>
 
-        <ul className="hidden md:flex items-center gap-1 text-sm font-medium">
-          {['Home', 'About', 'Skills', 'Project', 'Certificates', 'Contact'].map((item) => (
+        <ul className="hidden md:flex items-center gap-1 text-sm font-medium mx-auto">
+          {internalMenu.map((item) => (
             <li key={item}>
               <a 
                 href={location.pathname === '/' ? `#${item.toLowerCase()}` : '/'}
                 onClick={(e) => handleNavigation(e, item)}
-                className={`relative px-4 py-2 rounded-lg transition-all duration-300 group
-                  ${isActive(item) 
-                    ? 'text-[var(--color-accent)]' 
-                    : 'text-white/80 hover:text-[var(--color-accent)]'
-                  }`}
+                className="relative px-4 py-2 rounded-lg text-white/70 hover:text-[var(--color-accent)] transition-colors duration-300"
               >
-                <span className="relative z-10">{item}</span>
-                <span className="absolute inset-0 bg-[var(--color-accent)]/0 group-hover:bg-[var(--color-accent)]/10 rounded-lg backdrop-blur-none group-hover:backdrop-blur-[2px] transition-all duration-300" />
+                {item}
+                <span className="absolute inset-0 bg-[var(--color-accent)]/0 hover:bg-[var(--color-accent)]/10 rounded-lg transition-all duration-300" />
               </a>
             </li>
           ))}
         </ul>
+
+        <div className="hidden md:flex items-center">
+          <a
+            href={externalMenu.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative z-50 px-4 py-2 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium
+                       hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent-hover)] transition-all duration-300
+                       border border-[var(--color-accent)]/20 hover:border-[var(--color-accent)]/40 flex items-center gap-1"
+          >
+            {externalMenu.name}
+            <MdOpenInNew className="text-md" />
+          </a>
+        </div>
 
         <button 
           onClick={toggleMenu} 
@@ -115,33 +105,40 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div 
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      }`}>
         <div className="bg-[var(--color-bg)]/80 backdrop-blur-md border-t border-[var(--color-accent)]/20 shadow-inner">
           <ul className="flex flex-col text-center py-2">
-            {['Home', 'About', 'Skills', 'Project', 'Certificates', 'Contact'].map((item) => (
+            {internalMenu.map((item) => (
               <li key={item}>
                 <a 
                   href={location.pathname === '/' ? `#${item.toLowerCase()}` : '/'}
-                  onClick={(e) => {
-                    handleNavigation(e, item);
-                    setIsOpen(false);
-                  }}
-                  className="block px-4 py-3 text-white/70 hover:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition-all duration-300 relative group"
+                  onClick={(e) => handleNavigation(e, item)}
+                  className="block px-4 py-3 text-white/70 hover:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition-all duration-300"
                 >
-                  <span className="relative z-10">{item}</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-accent)]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  {item}
                 </a>
               </li>
             ))}
+            <li className="px-4 py-2">
+              <a 
+                href={externalMenu.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg 
+                           bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium
+                           hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent-hover)] 
+                           transition-all duration-300 border border-[var(--color-accent)]/20 
+                           hover:border-[var(--color-accent)]/40 w-full"
+              >
+                {externalMenu.name}
+                <MdOpenInNew className="text-md" />
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent" />
     </nav>
   );
 }

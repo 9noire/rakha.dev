@@ -13,6 +13,7 @@ import {
   SiDocker,
   SiPostman,
   SiLinux,
+  SiSupabase
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
@@ -26,6 +27,7 @@ export const iconMap = {
   SiMysql,
   SiPostgresql,
   SiMongodb,
+  SiSupabase,
   SiJavascript,
   SiTypescript,
   SiPhp,

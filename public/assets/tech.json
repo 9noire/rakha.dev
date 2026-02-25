@@ -30,6 +30,11 @@
     "icon": "SiMongodb"
   },
   {
+    "name": "Supabase",
+    "category": "Database",
+    "icon": "SiSupabase"
+  },
+  {
     "name": "JavaScript",
     "category": "Language",
     "icon": "SiJavascript"
