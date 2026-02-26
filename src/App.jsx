@@ -5,13 +5,22 @@ import Hero from "./Pages/Hero";
 import About from "./Pages/About";
 import Tech from "./Pages/Tech";
 import Project from "./Pages/Project";
-import MoreProject from "./Pages/More/Projects"; 
+import MoreProject from "./Pages/More/Projects";
 import Certificate from "./Pages/Certificate";
 import Contact from "./Pages/Contact";
 import Footer from "./Fragments/Footer";
 import ProjectDetail from "./Pages/Details/ProjectDetail";
 import MoreCertificates from "./Pages/More/Certificates";
 import CertificateDetail from "./Pages/Details/CertificateDetail";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>Rakha Fausta | Fullstack Developer</title>
+  <meta
+    name="description"
+    content="Portfolio Rakha Fausta - Fullstack Developer & Cybersecurity Enthusiast."
+  />
+</Helmet>
 
 function PageLayout({ children, showFooter = true }) {
   return (
@@ -67,17 +76,14 @@ export default function App() {
             {scanLines.map((line) => (
               <div
                 key={line.id}
-                className={`absolute ${
-                  line.isHorizontal ? "w-full h-[1px]" : "h-full w-[1px]"
-                } bg-gradient-to-${
-                  line.isHorizontal ? "r" : "b"
-                } from-transparent via-[var(--color-accent)] to-transparent`}
+                className={`absolute ${line.isHorizontal ? "w-full h-[1px]" : "h-full w-[1px]"
+                  } bg-gradient-to-${line.isHorizontal ? "r" : "b"
+                  } from-transparent via-[var(--color-accent)] to-transparent`}
                 style={{
                   top: line.isHorizontal ? `${line.position}%` : 0,
                   left: line.isHorizontal ? 0 : `${line.position}%`,
-                  animation: `${
-                    line.isHorizontal ? "scanHorizontal" : "scanVertical"
-                  } ${line.duration}s ease-in-out infinite alternate`,
+                  animation: `${line.isHorizontal ? "scanHorizontal" : "scanVertical"
+                    } ${line.duration}s ease-in-out infinite alternate`,
                   animationDelay: `${line.delay}s`,
                   opacity: line.opacity,
                 }}
@@ -88,45 +94,45 @@ export default function App() {
 
         <div className="relative z-10">
           <Routes>
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
                 <PageLayout showFooter={true}>
                   <MainPage />
                 </PageLayout>
-              } 
+              }
             />
-            <Route 
-              path="/projects" 
+            <Route
+              path="/projects"
               element={
                 <PageLayout showFooter={true}>
                   <MoreProject />
                 </PageLayout>
-              } 
+              }
             />
-            <Route 
-              path="/certificates" 
+            <Route
+              path="/certificates"
               element={
                 <PageLayout showFooter={true}>
                   <MoreCertificates />
                 </PageLayout>
-              } 
+              }
             />
-            <Route 
-              path="/projects/:id" 
+            <Route
+              path="/projects/:id"
               element={
                 <PageLayout showFooter={false}>
                   <ProjectDetail />
                 </PageLayout>
-              } 
+              }
             />
-            <Route 
-              path="/certificates/:id" 
+            <Route
+              path="/certificates/:id"
               element={
                 <PageLayout showFooter={false}>
                   <CertificateDetail />
                 </PageLayout>
-              } 
+              }
             />
           </Routes>
         </div>
