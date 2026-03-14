@@ -92,7 +92,7 @@ export default function Certificate() {
       )}
 
       <style jsx>{`
-        .group:hover .group-hover\:translate-x-1 {
+        .group:hover .group-hover:translate-x-1 {
           transform: translateX(0.25rem);
         }
       `}</style>

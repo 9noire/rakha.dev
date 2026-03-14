@@ -15,7 +15,7 @@ import CertificateDetail from "./Pages/Details/CertificateDetail";
 import { Helmet } from "react-helmet";
 
 <Helmet>
-  <title>Rakha Fausta | Fullstack Developer</title>
+  <title></title>
   <meta
     name="description"
     content="Portfolio Rakha Fausta - Fullstack Developer & Cybersecurity Enthusiast."
