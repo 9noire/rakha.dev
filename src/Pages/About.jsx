@@ -3,12 +3,6 @@ import profileImg from "../assets/img/photo.png";
 import { FaFileDownload } from "react-icons/fa";
 
 export default function About() {
-  const handleScrollToContact = () => {
-    const section = document.querySelector("#contact");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section
@@ -21,7 +15,7 @@ export default function About() {
             <img
               src={profileImg}
               alt="Rakha Profile"
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              className="cursor-pointer w-full h-full object-cover transition-transform duration-300 hover:scale-105"
             />
           </div>
           
@@ -30,10 +24,7 @@ export default function About() {
       </div>
 
       <div className="flex-1 text-center md:text-left space-y-5">
-        <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">
-          <span className="relative z-10">About Me</span>
-          <span className="absolute left-0 bottom-2 w-full h-4 bg-[var(--color-accent)]/30"></span>
-        </h2>
+        <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">About Me</h2>
 
         <p className="text-gray-300 leading-relaxed sm:text-lg max-w-xl mx-auto md:mx-0">
           Hello! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
