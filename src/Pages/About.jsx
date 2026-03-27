@@ -28,14 +28,11 @@ export default function About() {
 
         <p className="text-gray-300 leading-relaxed sm:text-lg max-w-xl mx-auto md:mx-0">
           Hello! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
-          a <span className="text-white font-medium">Software Engineer</span> and <span className="text-white font-medium">Cybersecurity Enthusiast</span> from{" "}
-          <span className="text-[var(--color-accent)] font-medium">SMK Negeri 7 Semarang</span>, majoring in{" "}
-          <span className="text-white font-medium">SIJA</span>.
+          a <span className="text-white font-medium">Software Engineer</span> and <span className="text-white font-medium">Cybersecurity Enthusiast.</span>
           <br /><br />
-          I'm passionate about building secure and scalable web applications that balance user experience and system architecture. 
-          I work across both frontend and backend to create structured, efficient, and reliable systems.
+          I'm passionate about building scalable web applications that balance user experience and system architecture. 
           <br /> <br />
-          Beyond development, I explore cybersecurity to better understand how modern systems can be protected.
+          Beyond development, I explore cybersecurity to better understand how modern systems work.
         </p>
 
         <div className="flex justify-center md:justify-start gap-4 pt-4">

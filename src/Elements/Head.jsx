@@ -4,7 +4,7 @@ export const Head = () => {
     return (
         <div>
             <Typewritter options={{
-                strings: ["I'm Rakha Fausta", "Securing What i Build"],
+                strings: ["I'm Rakha Fausta", "Think, Craft, Grow."],
                 autoStart: true,
                 loop: true,
                 delay: 67

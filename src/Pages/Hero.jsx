@@ -67,7 +67,7 @@ export default function Hero() {
       </div>
 
       <div className="flex-1 flex flex-col justify-center items-center text-center space-y-6 max-w-4xl mx-auto md:mt-0 mt-8">
-        
+
         <h4 className="text-xl md:text-2xl font-medium text-[var(--color-text)]">
           Hello World!{' '}
           <span
@@ -98,11 +98,8 @@ export default function Hero() {
           <Head />
         </h1>
 
-        <p className="text-[var(--color-subtext)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-4">
-          I'm a <span className="text-[var(--color-accent)] font-medium">Software Engineer</span> who builds
-          modern and efficient digital solutions, with a strong interest in
-          <span className="text-[var(--color-accent)] font-medium"> Cybersecurity</span> to ensure every system
-          I create is both powerful and secure.
+        <p className="text-[var(--color-subtext)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-4 mt-4">
+          I enjoy turning ideas into reliable and efficient digital solutions.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-6 w-full sm:w-auto px-4">
@@ -157,7 +154,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div 
+      <div
         onClick={handleMouseClick}
         className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group z-20"
       >
