@@ -27,8 +27,8 @@ export default function About() {
         <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">About Me</h2>
 
         <p className="text-gray-300 leading-relaxed sm:text-lg max-w-xl mx-auto md:mx-0">
-          Hello! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
-          a <span className="text-white font-medium">Software Engineer</span> and <span className="text-white font-medium">Cybersecurity Enthusiast.</span>
+          Hola! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
+          a <span className="text-white font-medium">Fullstack Developer</span> and <span className="text-white font-medium">Cybersecurity Learner.</span>
           <br /><br />
           I'm passionate about building scalable web applications that balance user experience and system architecture. 
           <br /> <br />

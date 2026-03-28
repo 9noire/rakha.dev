@@ -88,9 +88,9 @@ export default function Contact() {
             </h3>
             
             <p className="text-gray-400 leading-relaxed">
-              I'm always open to connect, share ideas, and grow together. 
-              Whether it's about web development or just exchanging thoughts 
-              about tech, feel free to drop a message.
+              I'm always open to connect, share ideas, and grow together.
+              <br />
+              feel free to drop a message.
             </p>
 
             <div className="cursor-pointer space-y-4 pt-4">

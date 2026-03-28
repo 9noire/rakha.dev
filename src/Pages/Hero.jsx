@@ -98,8 +98,8 @@ export default function Hero() {
           <Head />
         </h1>
 
-        <p className="text-[var(--color-subtext)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-4 mt-4">
-          I enjoy turning ideas into reliable and efficient digital solutions.
+        <p className="text-[var(--color-subtext)] text-base sm:text-lg max-w-xl mx-auto leading-relaxed px-4 mt-4">
+          I enjoy turning ideas into reliable and efficient digital solutions, with a focus on simplicity and clear implementation.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-6 w-full sm:w-auto px-4">
