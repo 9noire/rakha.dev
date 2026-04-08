@@ -35,7 +35,7 @@ export default function Certificate() {
       </div>
 
       <div className="flex items-center mb-20">
-        <h2 className="text-2xl font-bold text-white mr-4">Certificates</h2>
+        <h1 className="text-2xl font-bold text-white mr-4">Certificates</h1>
         <div className="flex-grow h-[1px] bg-[var(--color-accent)]"></div>
       </div>
 

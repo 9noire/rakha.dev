@@ -59,7 +59,7 @@ export default function Project() {
   return (
     <section id="project" className="relative py-16 px-4 sm:py-20 sm:px-8 lg:px-12">
       <div className="flex items-center mb-20">
-        <h2 className="text-2xl font-bold text-white mr-4">Projects</h2>
+        <h1 className="text-2xl font-bold text-white mr-4">Projects</h1>
         <div className="flex-grow h-[1px] bg-[var(--color-accent)]"></div>
       </div>
 

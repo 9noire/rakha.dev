@@ -83,9 +83,9 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-white mb-4">
+            <h1 className="text-3xl font-bold text-white mb-4">
               Get in <span className="text-[var(--color-accent)]">Touch</span>
-            </h3>
+            </h1>
             
             <p className="text-gray-400 leading-relaxed">
               I'm always open to connect, share ideas, and grow together.

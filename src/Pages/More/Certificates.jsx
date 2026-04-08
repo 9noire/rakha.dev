@@ -64,7 +64,7 @@ export default function MoreCertificates() {
       </div>
 
       <div className="flex flex-col gap-3 items-center justify-center mb-12 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mr-4">Certificates</h2>
+        <h1 className="text-3xl font-bold text-white mr-4">Certificates</h1>
         <p className="text-md text-center text-[var(--color-subtext)]">A collection of certifications that reflect my learning journey and technical growth.</p>
       </div>
 

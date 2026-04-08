@@ -24,7 +24,7 @@ export default function About() {
       </div>
 
       <div className="flex-1 text-center md:text-left space-y-5">
-        <h2 className="relative inline-block text-3xl md:text-4xl font-bold text-white">About Me</h2>
+        <h1 className="relative inline-block text-3xl md:text-4xl font-bold text-white">About Me</h1>
 
         <p className="text-gray-300 leading-relaxed sm:text-lg max-w-xl mx-auto md:mx-0">
           Hola! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
