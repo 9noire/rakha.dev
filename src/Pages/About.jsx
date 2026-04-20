@@ -1,5 +1,5 @@
 import Button from "../Elements/Button";
-import profileImg from "../assets/img/photo.png";
+import profileImg from "../assets/img/photo.jpeg";
 import { FaFileDownload } from "react-icons/fa";
 
 export default function About() {
