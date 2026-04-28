@@ -34,19 +34,6 @@ export default function About() {
           <br /> <br />
           Beyond development, I explore cybersecurity to better understand how modern systems work.
         </p>
-
-        <div className="flex justify-center md:justify-start gap-4 pt-4">
-          <a
-            href="https://drive.google.com/file/d/1euKYRDe6n_6GkP8zl_TsBo7LQ8yXXgEk/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button 
-              icon={<FaFileDownload className="text-lg"/>} 
-              text="Download CV" 
-            />
-          </a>
-        </div>
       </div>
     </section>
   );
