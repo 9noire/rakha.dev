@@ -9,7 +9,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const internalMenu = ['Home', 'About', 'Skills', 'Project', 'Certificates', 'Contact'];
-  const externalMenu = { name: 'Blog', url: 'https://medium.com/@rakhafausta07' };
+  const externalMenu = { name: 'Blog', url: 'https://rakhaafd.github.io/dev-blog' };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
