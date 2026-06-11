@@ -18,7 +18,7 @@ export default function About() {
               className="cursor-pointer w-full h-full object-cover transition-transform duration-300 hover:scale-105"
             />
           </div>
-          
+
           <div className="absolute inset-0 rounded-full bg-[var(--color-accent)]/5 opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10 blur-md"></div>
         </div>
       </div>
@@ -30,10 +30,22 @@ export default function About() {
           Hola! I'm <span className="text-[var(--color-accent)] font-medium">Rakha Fausta Adinata Raharja</span>,
           a <span className="text-white font-medium">Fullstack Developer</span> and <span className="text-white font-medium">Cybersecurity Learner.</span>
           <br /><br />
-          I'm passionate about building scalable web applications that balance user experience and system architecture. 
+          I'm passionate about building scalable web applications that balance user experience and system architecture.
           <br /> <br />
           Beyond development, I explore cybersecurity to better understand how modern systems work.
         </p>
+        <div className="flex justify-center md:justify-start gap-4 pt-4">
+          <a
+            href="https://drive.google.com/file/d/1R0JwnMq0w3oOBfRB5wlqCZ3qaAqwjD5y/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              icon={<FaFileDownload className="text-lg" />}
+              text="Download CV"
+            />
+          </a>
+        </div>
       </div>
     </section>
   );

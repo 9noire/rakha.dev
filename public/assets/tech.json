@@ -55,6 +55,11 @@
     "icon": "SiPython"
   },
   {
+    "name": "Golang",
+    "category": "Language",
+    "icon": "SiGo"
+  },
+  {
     "name": "Git",
     "category": "DevOps",
     "icon": "SiGit"
@@ -68,6 +73,16 @@
     "name": "Digital Forensics",
     "category": "Cyber Security",
     "icon": "FaUserSecret"
+  },
+  {
+    "name": "Frappe",
+    "category": "Framework",
+    "icon": "SiFrappe"
+  },
+  {
+    "name": "ERPNext",
+    "category": "Framework",
+    "icon": "SiErpnext"
   },
   {
     "name": "Visual Studio Code",
