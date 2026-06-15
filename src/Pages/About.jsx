@@ -36,7 +36,7 @@ export default function About() {
         </p>
         <div className="flex justify-center md:justify-start gap-4 pt-4">
           <a
-            href="https://drive.google.com/file/d/1R0JwnMq0w3oOBfRB5wlqCZ3qaAqwjD5y/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1UxXWo6TjuEflSNmrA8QJ-Y1thZYpfsKp/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
