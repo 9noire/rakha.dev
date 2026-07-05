@@ -37,30 +37,30 @@ export default function Hero() {
           href="https://github.com/rakhaafd"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group"
+          className="p-3 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group glitch-hover"
           aria-label="GitHub"
         >
-          <FaGithub size={20} className="text-gray-400 group-hover:text-[var(--color-accent)]" />
+          <FaGithub size={20} className="text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]" />
         </a>
 
         <a
           href="https://www.linkedin.com/in/rakhafausta"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group"
+          className="p-3 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group glitch-hover"
           aria-label="LinkedIn"
         >
-          <FaLinkedin size={20} className="text-gray-400 group-hover:text-[var(--color-accent)]" />
+          <FaLinkedin size={20} className="text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]" />
         </a>
 
         <a
           href="https://www.instagram.com/rakhaafd/"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group"
+          className="p-3 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group glitch-hover"
           aria-label="Instagram"
         >
-          <FaInstagram size={20} className="text-gray-400 group-hover:text-[var(--color-accent)]" />
+          <FaInstagram size={20} className="text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]" />
         </a>
 
         <div className="w-px h-12 bg-[var(--color-accent)]/30 mx-auto mt-2"></div>
@@ -69,13 +69,7 @@ export default function Hero() {
       <div className="flex-1 flex flex-col justify-center items-center text-center space-y-6 max-w-4xl mx-auto md:mt-0 mt-8">
 
         <h4 className="text-xl md:text-2xl font-medium text-[var(--color-text)]">
-          Hello World!{' '}
-          <span
-            className="inline-block animate-wave"
-            style={{ transformOrigin: '70% 70%' }}
-          >
-            👋
-          </span>
+          // INITIALIZING
         </h4>
         <style jsx>{`
           @keyframes wave {
@@ -124,30 +118,30 @@ export default function Hero() {
             href="https://github.com/rakhaafd"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 bg-[#1e1e1e] rounded-lg border border-[#2a2a2a] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group"
+            className="p-2.5 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group glitch-hover"
             aria-label="GitHub"
           >
-            <FaGithub size={18} className="text-gray-400 group-hover:text-[var(--color-accent)]" />
+            <FaGithub size={18} className="text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]" />
           </a>
 
           <a
             href="https://www.linkedin.com/in/rakhafausta"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 bg-[#1e1e1e] rounded-lg border border-[#2a2a2a] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group"
+            className="p-2.5 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group glitch-hover"
             aria-label="LinkedIn"
           >
-            <FaLinkedin size={18} className="text-gray-400 group-hover:text-[var(--color-accent)]" />
+            <FaLinkedin size={18} className="text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]" />
           </a>
 
           <a
             href="https://www.instagram.com/rakhaafd"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 bg-[#1e1e1e] rounded-lg border border-[#2a2a2a] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group"
+            className="p-2.5 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group glitch-hover"
             aria-label="Instagram"
           >
-            <FaInstagram size={18} className="text-gray-400 group-hover:text-[var(--color-accent)]" />
+            <FaInstagram size={18} className="text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]" />
           </a>
 
           <div className="w-12 h-px bg-[var(--color-accent)]/30"></div>
@@ -159,10 +153,10 @@ export default function Hero() {
         className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group z-20"
       >
         <div className="flex flex-col items-center gap-1 md:gap-2">
-          <div className="w-5 h-8 md:w-6 md:h-10 rounded-full border-2 border-[var(--color-accent)]/40 group-hover:border-[var(--color-accent)] transition-colors duration-300 flex justify-center">
-            <div className="w-1 h-1.5 md:w-1 md:h-2 bg-[var(--color-accent)] rounded-full mt-2 animate-scroll"></div>
+          <div className="w-5 h-8 md:w-6 md:h-10  border-2 border-[var(--color-border)] group-hover:border-[var(--color-accent)] transition-colors duration-300 flex justify-center">
+            <div className="w-1 h-1.5 md:w-1 md:h-2 bg-[var(--color-accent)]  mt-2 animate-scroll"></div>
           </div>
-          <span className="text-[10px] md:text-xs text-white/60 group-hover:text-white transition-colors duration-300">
+          <span className="text-[10px] md:text-xs text-[var(--color-subtext)] group-hover:text-[var(--color-text)] transition-colors duration-300">
             Scroll Down
           </span>
         </div>

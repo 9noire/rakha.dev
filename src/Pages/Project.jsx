@@ -59,14 +59,14 @@ export default function Project() {
   return (
     <section id="project" className="relative py-16 px-4 sm:py-20 sm:px-8 lg:px-12">
       <div className="flex items-center mb-20">
-        <h1 className="text-2xl font-bold text-white mr-4">Projects</h1>
-        <div className="flex-grow h-[1px] bg-[var(--color-accent)]"></div>
+        <h1 className="text-2xl font-bold text-[var(--color-text)] mr-4">Projects</h1>
+        <div className="flex-grow h-[1px] bg-[var(--color-border)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto">
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)] rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-[var(--color-border)] border-t-[var(--color-accent)] animate-spin" />
           </div>
         ) : (
           <>
@@ -99,7 +99,7 @@ export default function Project() {
                       >
                         {mainImage && !hasImageError && (
                           <div
-                            className="absolute -top-3 -right-3 w-full h-full rounded-xl border border-[var(--color-border)] bg-cover bg-center blur-[1px] brightness-60"
+                            className="absolute -top-3 -right-3 w-full h-full border border-[var(--color-border)] bg-cover bg-center blur-[1px] brightness-60"
                             style={{
                               backgroundImage: `url(${getImagePath(mainImage)})`,
                               transform: 'rotate(-2deg)',
@@ -113,12 +113,12 @@ export default function Project() {
                             <img
                               src={getImagePath(mainImage)}
                               alt={project.title}
-                              className="w-full h-auto rounded-xl border border-[var(--color-border)] relative z-10 shadow-xl"
+                              className="w-full h-auto border border-[var(--color-border)] relative z-10 shadow-xl"
                               onError={() => handleImageError(projectId)}
                             />
                           </>
                         ) : (
-                          <div className="w-full h-48 sm:h-56 md:h-64 bg-[var(--color-card)] rounded-xl border border-[var(--color-border)] flex items-center justify-center text-[var(--color-subtext)] text-4xl sm:text-5xl relative z-10">
+                          <div className="w-full h-48 sm:h-56 md:h-64 bg-[var(--color-card)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-subtext)] text-4xl sm:text-5xl relative z-10">
                             📁
                           </div>
                         )}
@@ -126,7 +126,7 @@ export default function Project() {
                     </div>
 
                     <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'} order-2 ${isEven ? 'lg:text-left' : 'lg:text-right'} text-left`}>
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-3 sm:mb-4">
                         {project.title}
                       </h3>
 
@@ -139,7 +139,7 @@ export default function Project() {
                           {project.technology.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="bg-white/5 text-[var(--color-subtext)] px-3 py-1.5 rounded-md text-xs sm:text-sm border border-[var(--color-border)]"
+                              className="bg-white/5 text-[var(--color-subtext)] px-3 py-1.5 text-xs sm:text-sm border border-[var(--color-border)]"
                             >
                               {tech}
                             </span>
@@ -178,7 +178,7 @@ export default function Project() {
                   text="More Project"
                   variant="outline"
                   onClick={() => navigate("/projects")}
-                  className="m-auto px-6 py-3 text-sm sm:text-base rounded-full transition-all duration-300"
+                  className="m-auto px-6 py-3 text-sm sm:text-base  transition-all duration-300"
                 />
               </div>
             )}

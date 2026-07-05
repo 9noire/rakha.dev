@@ -36,19 +36,17 @@ export default function Card({
     <div
       className={`
         group relative
-        bg-gradient-to-b from-[#1e1e1e] to-[#181818]
-        border border-[#2a2a2a] hover:border-[var(--color-accent)]/30
-        rounded-2xl
-        shadow-lg hover:shadow-[0_8px_20px_-4px_rgba(232,255,155,0.15)]
+        bg-[var(--color-card)]
+        border border-[var(--color-border)] hover:border-[var(--color-accent)]
+        shadow-md hover:shadow-lg
         transition-all duration-300 ease-out
         flex flex-col
         overflow-hidden
+        glitch-hover
         ${className}
       `}
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[var(--color-accent)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      
-      <div className="absolute inset-0 rounded-2xl border border-[var(--color-accent)]/0 group-hover:border-[var(--color-accent)]/20 transition-colors duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="relative z-10 flex flex-col h-full">
         <div className="w-full">
@@ -58,20 +56,20 @@ export default function Card({
         <div className="p-6 flex flex-col flex-grow">
           {date && (
             <div className="mb-2">
-              <span className="text-xs text-gray-500 bg-[#242424] px-2 py-1 rounded-md border border-[#323232] inline-flex items-center gap-1 mb-3">
+              <span className="text-xs text-gray-500 bg-[#242424] px-2 py-1  border border-[#323232] inline-flex items-center gap-1 mb-3">
                 {formatDate(date)}
               </span>
             </div>
           )}
 
           {title && (
-            <h3 className="text-white font-semibold text-lg mb-3 group-hover:text-[var(--color-accent)]/90 transition-colors duration-300">
+            <h3 className="text-[var(--color-text)] font-semibold text-lg mb-3 group-hover:text-[var(--color-accent)] transition-colors duration-300">
               {title}
             </h3>
           )}
           
           {description && (
-            <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4 flex-grow">
+            <p className="text-[var(--color-subtext)] text-sm leading-relaxed group-hover:text-[var(--color-text)] transition-colors duration-300 mb-4 flex-grow">
               {description}
             </p>
           )}
@@ -84,20 +82,19 @@ export default function Card({
                     key={i}
                     text={item}
                     className="
-                      bg-[#242424] 
-                      border border-[#323232] 
-                      group-hover:border-[var(--color-accent)]/20 
-                      group-hover:bg-[#2a2a2a]
+                      bg-[var(--color-bg)] 
+                      border border-[var(--color-border)] 
+                      group-hover:border-[var(--color-accent)] 
+                      group-hover:bg-[var(--color-card)]
                       px-2.5 py-1 
-                      rounded-lg 
                       text-[11px] font-medium
-                      text-gray-300 group-hover:text-[var(--color-accent)]/90
+                      text-[var(--color-subtext)] group-hover:text-[var(--color-accent)]
                       transition-all duration-300 ease-out
                     "
                   />
                 ))}
                 {tech.length > 2 && (
-                  <span className="text-[11px] text-gray-500 bg-[#242424] px-2.5 py-1 rounded-lg border border-[#323232]">
+                  <span className="text-[11px] text-[var(--color-subtext)] bg-[var(--color-bg)] px-2.5 py-1 border border-[var(--color-border)]">
                     +{tech.length - 2}
                   </span>
                 )}

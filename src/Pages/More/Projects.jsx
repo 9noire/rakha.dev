@@ -76,7 +76,7 @@ export default function Projects() {
 
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)] rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)]  animate-spin" />
         </div>
       ) : (
         <div className="max-w-7xl mx-auto">
@@ -100,7 +100,7 @@ export default function Projects() {
                     <img
                       src={getImagePath(thumbnailImage)}
                       alt={project.title}
-                      className="w-full h-48 object-cover rounded-t-lg"
+                      className="w-full h-48 object-cover "
                       onError={(e) => {
                         console.error(`Failed to load image: ${thumbnailImage}`);
                         handleImageError(projectId);
@@ -108,7 +108,7 @@ export default function Projects() {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center rounded-t-lg">
+                    <div className="w-full h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center ">
                       <div className="text-center">
                         <span className="text-sm text-gray-500">Image not available</span>
                       </div>

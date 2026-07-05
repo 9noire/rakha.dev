@@ -89,7 +89,7 @@ export default function ProjectDetail() {
           </button>
 
           <div className="flex justify-center items-center h-64">
-            <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)] rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)]  animate-spin" />
           </div>
         </div>
       </section>
@@ -108,7 +108,7 @@ export default function ProjectDetail() {
             <span>Back</span>
           </button>
 
-          <div className="text-center text-gray-400 py-20 bg-gradient-to-b from-[#1e1e1e] to-[#181818] rounded-2xl border border-[#2a2a2a]">
+          <div className="text-center text-gray-400 py-20 bg-gradient-to-b from-[#1e1e1e] to-[#181818]  border border-[#2a2a2a]">
             <p className="text-6xl mb-4">😕</p>
             <p className="text-2xl mb-2">Project Not Found</p>
             <p className="text-gray-500">The project you're looking for doesn't exist.</p>
@@ -134,7 +134,7 @@ export default function ProjectDetail() {
           <span>Back to Projects</span>
         </button>
 
-        <div className="bg-gradient-to-b from-[#1e1e1e] to-[#181818] rounded-2xl border border-[#2a2a2a] overflow-hidden">
+        <div className="bg-gradient-to-b from-[#1e1e1e] to-[#181818]  border border-[#2a2a2a] overflow-hidden">
           {images.length > 0 && (
             <div className="relative w-full h-[400px] group/image">
               {!hasImageError ? (
@@ -161,7 +161,7 @@ export default function ProjectDetail() {
                     className={`
                       absolute left-4 top-1/2 -translate-y-1/2
                       bg-black/50 hover:bg-black/70
-                      text-white rounded-full p-3
+                      text-white  p-3
                       transition-all duration-300
                       opacity-0 group-hover/image:opacity-100
                       disabled:opacity-0 disabled:cursor-not-allowed
@@ -177,7 +177,7 @@ export default function ProjectDetail() {
                     className={`
                       absolute right-4 top-1/2 -translate-y-1/2
                       bg-black/50 hover:bg-black/70
-                      text-white rounded-full p-3
+                      text-white  p-3
                       transition-all duration-300
                       opacity-0 group-hover/image:opacity-100
                       disabled:opacity-0 disabled:cursor-not-allowed
@@ -196,7 +196,7 @@ export default function ProjectDetail() {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`
-                        w-2 h-2 rounded-full transition-all duration-300
+                        w-2 h-2  transition-all duration-300
                         ${index === currentImageIndex
                           ? 'bg-[var(--color-accent)] w-6'
                           : 'bg-[var(--color-subtext)]'
@@ -215,7 +215,7 @@ export default function ProjectDetail() {
                 {project.title}
               </h1>
               {project.status && (
-                <span className="bg-[var(--color-accent)]/10 text-[var(--color-accent)] px-4 py-2 rounded-full text-sm border border-[var(--color-accent)]/30 flex items-center gap-2">
+                <span className="bg-[var(--color-accent)]/10 text-[var(--color-accent)] px-4 py-2  text-sm border border-[var(--color-accent)]/30 flex items-center gap-2">
                   <FaCheckCircle />
                   {project.status}
                 </span>
@@ -224,7 +224,7 @@ export default function ProjectDetail() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               {project.date && (
-                <div className="bg-[#242424] rounded-xl p-4 border border-[#323232]">
+                <div className="bg-[#242424]  p-4 border border-[#323232]">
                   <p className="text-xs text-gray-500">Date</p>
                   <p className="text-sm text-white flex items-center gap-2">
                     <FaCalendarAlt className="text-[var(--color-accent)]" />
@@ -234,7 +234,7 @@ export default function ProjectDetail() {
               )}
 
               {project.type && (
-                <div className="bg-[#242424] rounded-xl p-4 border border-[#323232]">
+                <div className="bg-[#242424]  p-4 border border-[#323232]">
                   <p className="text-xs text-gray-500">Project Type</p>
                   <p className="text-sm text-white flex items-center gap-2">
                     <span className="text-[var(--color-accent)]">
@@ -246,7 +246,7 @@ export default function ProjectDetail() {
               )}
 
               {project.role && (
-                <div className="bg-[#242424] rounded-xl p-4 border border-[#323232]">
+                <div className="bg-[#242424]  p-4 border border-[#323232]">
                   <p className="text-xs text-gray-500">Role</p>
                   <p className="text-sm text-white flex items-center gap-2">
                     <FaLaptopCode className="text-[var(--color-accent)]" />
@@ -293,7 +293,7 @@ export default function ProjectDetail() {
                   {project.technology.map((tech, index) => (
                     <span
                       key={index}
-                      className="bg-[#242424] border border-[#323232] text-gray-300 px-4 py-2 rounded-lg text-sm hover:border-[var(--color-accent)]/20 transition-colors"
+                      className="bg-[#242424] border border-[#323232] text-gray-300 px-4 py-2  text-sm hover:border-[var(--color-accent)]/20 transition-colors"
                     >
                       {tech}
                     </span>

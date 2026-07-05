@@ -7,7 +7,7 @@ export default function Button({
   className = "",
 }) {
   const baseStyle =
-    "cursor-pointer text-md flex items-center justify-center gap-2 px-4 py-2 rounded-md font-semibold transition-all duration-300";
+    "cursor-pointer text-md flex items-center justify-center gap-2 px-4 py-2 font-semibold transition-all duration-300 terminal-bracket glitch-hover";
 
   const variants = {
     solid:

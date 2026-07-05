@@ -70,7 +70,7 @@ export default function MoreCertificates() {
 
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)] rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)]  animate-spin" />
         </div>
       ) : (
         <div className="max-w-7xl mx-auto">
@@ -94,7 +94,7 @@ export default function MoreCertificates() {
                       <img
                         src={getImagePath(certificate.image)}
                         alt={certificate.title}
-                        className="w-full h-48 object-cover rounded-t-lg"
+                        className="w-full h-48 object-cover "
                         onError={(e) => {
                           console.error(`Failed to load image: ${certificate.image}`);
                           handleImageError(certId);
@@ -102,7 +102,7 @@ export default function MoreCertificates() {
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center rounded-t-lg">
+                      <div className="w-full h-48 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center ">
                         <div className="text-center">
                           <FaCertificate className="text-5xl text-gray-600 block mx-auto mb-2" />
                           <span className="text-sm text-gray-500">Image not available</span>

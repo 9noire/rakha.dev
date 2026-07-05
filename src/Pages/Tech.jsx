@@ -22,10 +22,10 @@ export default function Tech() {
   }, {});
 
   return (
-    <section id="skills" className="py-20 text-white px-6 sm:px-12">
+    <section id="skills" className="py-20 text-[var(--color-text)] px-6 sm:px-12">
       <div className="flex items-center mb-10">
         <h1 className="text-2xl font-bold mr-4">Skills</h1>
-        <div className="flex-grow h-[1px] bg-[#E8FF9B]"></div>
+        <div className="flex-grow h-[1px] bg-[var(--color-border)]"></div>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -40,7 +40,7 @@ export default function Tech() {
                 return (
                   <span
                     key={i}
-                    className="cursor-pointer flex items-center gap-2 bg-[#2A2A2A] text-gray-300 px-3 py-1 rounded-md text-sm font-medium hover:bg-[#E8FF9B]/10 transition-colors"
+                    className="cursor-pointer flex items-center gap-2 bg-[var(--color-card)] text-[var(--color-subtext)] border border-[var(--color-border)] px-3 py-1 text-sm font-medium hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text)] transition-colors glitch-hover terminal-bracket"
                   >
                     {Icon && <Icon size={16} />}
                     {tech.name}

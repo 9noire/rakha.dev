@@ -94,35 +94,35 @@ export default function Contact() {
             </p>
 
             <div className="cursor-pointer space-y-4 pt-4">
-              <div className="flex items-center gap-4 p-4 bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] hover:border-[var(--color-accent)]/30 transition-all duration-300 group">
-                <div className="p-3 bg-[#2a2a2a] rounded-lg group-hover:bg-[#2a2a2a]/80">
+              <div className="flex items-center gap-4 p-4 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 group glitch-hover">
+                <div className="p-3 bg-[var(--color-bg)] group-hover:bg-[var(--color-border)]">
                   <FaEnvelope className="text-[var(--color-accent)]" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Email</p>
-                  <p className="text-white">rakhafausta07@gmail.com</p>
+                  <p className="text-sm text-[var(--color-subtext)]">Email</p>
+                  <p className="text-[var(--color-text)]">rakhafausta07@gmail.com</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-4 bg-[#1e1e1e] rounded-xl border border-[#2a2a2a] hover:border-[var(--color-accent)]/30 transition-all duration-300 group">
-                <div className="p-3 bg-[#2a2a2a] rounded-lg group-hover:bg-[#2a2a2a]/80">
+              <div className="flex items-center gap-4 p-4 bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 group glitch-hover">
+                <div className="p-3 bg-[var(--color-bg)] group-hover:bg-[var(--color-border)]">
                   <FaMapMarkerAlt className="text-[var(--color-accent)]" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Location</p>
-                  <p className="text-white">Semarang, Indonesia</p>
+                  <p className="text-sm text-[var(--color-subtext)]">Location</p>
+                  <p className="text-[var(--color-text)]">Semarang, Indonesia</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-2xl p-8 hover:border-[var(--color-accent)]/30 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
+          <div className="bg-[var(--color-card)] border border-[var(--color-border)] p-8 hover:border-[var(--color-accent)] transition-all duration-300">
+            <h3 className="text-2xl font-bold text-[var(--color-text)] mb-6">Send Message</h3>
             
             {status.message && (
-              <div className={`mb-6 p-4 rounded-xl text-sm ${
+              <div className={`mb-6 p-4 text-sm ${
                 status.type === "success" 
-                  ? "bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30 text-[var(--color-accent)]" 
+                  ? "bg-[var(--color-accent)] border border-[var(--color-accent)] text-[var(--color-bg)]" 
                   : "bg-red-500/10 border border-red-500/30 text-red-500"
               }`}>
                 {status.message}
@@ -141,7 +141,7 @@ export default function Contact() {
                   required
                   disabled={isLoading}
                   placeholder="Your name"
-                  className="w-full px-4 py-3 rounded-xl bg-[#242424] border border-[#2a2a2a] text-white placeholder-gray-500 focus:outline-none focus:border-[var(--color-accent)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-subtext)] focus:outline-none focus:border-[var(--color-accent)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -156,7 +156,7 @@ export default function Contact() {
                   required
                   disabled={isLoading}
                   placeholder="Your email"
-                  className="w-full px-4 py-3 rounded-xl bg-[#242424] border border-[#2a2a2a] text-white placeholder-gray-500 focus:outline-none focus:border-[var(--color-accent)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-subtext)] focus:outline-none focus:border-[var(--color-accent)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -171,7 +171,7 @@ export default function Contact() {
                   required
                   disabled={isLoading}
                   placeholder="Your message"
-                  className="w-full px-4 py-3 rounded-xl bg-[#242424] border border-[#2a2a2a] text-white placeholder-gray-500 focus:outline-none focus:border-[var(--color-accent)] transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-subtext)] focus:outline-none focus:border-[var(--color-accent)] transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -180,7 +180,7 @@ export default function Contact() {
                 type="submit"
                 disabled={isLoading}
                 icon={isLoading ? <FaSpinner className="text-lg animate-spin" /> : <FaPaperPlane className="text-lg" />}
-                className={`w-full justify-center mt-4 bg-[var(--color-accent)] text-black font-semibold py-3 rounded-xl transition-all duration-300 ${
+                className={`w-full justify-center mt-4 bg-[var(--color-accent)] text-black font-semibold py-3  transition-all duration-300 ${
                   isLoading 
                     ? "opacity-70 cursor-not-allowed" 
                     : "hover:bg-[var(--color-accent-hover)]"

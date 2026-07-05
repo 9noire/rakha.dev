@@ -4,18 +4,11 @@ import { MdOpenInNew } from "react-icons/md";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const internalMenu = ['Home', 'About', 'Skills', 'Project', 'Certificates', 'Contact'];
-  const externalMenu = { name: 'Blog', url: 'https://rakhaafd.github.io/dev-blog' };
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const externalMenu = { name: 'Blog', url: 'https://medium.com/@rakhafausta07' };
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -46,14 +39,10 @@ export default function Navbar() {
   }, [location, navigate]);
 
   return (
-    <nav className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-[var(--color-bg)]/80 backdrop-blur-md shadow-lg shadow-[var(--color-accent)]/5' 
-        : 'bg-[var(--color-bg)]/60 backdrop-blur-sm'
-    }`}>
+    <nav className="w-full fixed top-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-md shadow-md border-b border-[var(--color-border)]">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
 
-        <h1 
+        <h1
           onClick={() => navigate('/')}
           className="text-xl font-bold relative group cursor-pointer"
         >
@@ -63,13 +52,13 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-1 text-sm font-medium mx-auto">
           {internalMenu.map((item) => (
             <li key={item}>
-              <a 
+              <a
                 href={location.pathname === '/' ? `#${item.toLowerCase()}` : '/'}
                 onClick={(e) => handleNavigation(e, item)}
-                className="relative px-4 py-2 rounded-lg text-white/70 hover:text-[var(--color-accent)] transition-colors duration-300"
+                className="relative px-4 py-2 text-[var(--color-subtext)] hover:text-[var(--color-text)] transition-colors duration-300 terminal-bracket"
               >
                 {item}
-                <span className="absolute inset-0 bg-[var(--color-accent)]/0 hover:bg-[var(--color-accent)]/10 rounded-lg transition-all duration-300" />
+                <span className="absolute inset-0 bg-[var(--color-accent)]/0 hover:bg-[var(--color-accent)]/10 transition-all duration-300" />
               </a>
             </li>
           ))}
@@ -80,18 +69,18 @@ export default function Navbar() {
             href={externalMenu.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-50 px-4 py-2 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium
-                       hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent-hover)] transition-all duration-300
-                       border border-[var(--color-accent)]/20 hover:border-[var(--color-accent)]/40 flex items-center gap-1"
+            className="relative z-50 px-4 py-2 bg-[var(--color-bg)] text-[var(--color-text)] font-medium
+                       hover:bg-[var(--color-card)] transition-all duration-300 terminal-bracket
+                       border border-[var(--color-border)] hover:border-[var(--color-accent)] flex items-center gap-1 glitch-hover"
           >
             {externalMenu.name}
             <MdOpenInNew className="text-md" />
           </a>
         </div>
 
-        <button 
-          onClick={toggleMenu} 
-          className="md:hidden focus:outline-none relative p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/30 transition-all duration-300"
+        <button
+          onClick={toggleMenu}
+          className="md:hidden focus:outline-none relative p-2  bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/30 transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,14 +94,13 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
         <div className="bg-[var(--color-bg)]/80 backdrop-blur-md border-t border-[var(--color-accent)]/20 shadow-inner">
           <ul className="flex flex-col text-center py-2">
             {internalMenu.map((item) => (
               <li key={item}>
-                <a 
+                <a
                   href={location.pathname === '/' ? `#${item.toLowerCase()}` : '/'}
                   onClick={(e) => handleNavigation(e, item)}
                   className="block px-4 py-3 text-white/70 hover:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition-all duration-300"
@@ -122,15 +110,14 @@ export default function Navbar() {
               </li>
             ))}
             <li className="px-4 py-2">
-              <a 
+              <a
                 href={externalMenu.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg 
-                           bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium
-                           hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent-hover)] 
-                           transition-all duration-300 border border-[var(--color-accent)]/20 
-                           hover:border-[var(--color-accent)]/40 w-full"
+                className="flex items-center justify-center gap-2 px-4 py-3 
+                           bg-[var(--color-card)] text-[var(--color-text)] font-medium
+                           hover:bg-[var(--color-bg-alt)] transition-all duration-300 border border-[var(--color-border)] 
+                           hover:border-[var(--color-accent)] w-full glitch-hover terminal-bracket"
               >
                 {externalMenu.name}
                 <MdOpenInNew className="text-md" />

@@ -74,7 +74,7 @@ export default function CertificateDetail() {
           </button>
           
           <div className="flex justify-center items-center h-64">
-            <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)] rounded-full animate-spin" />
+            <div className="w-12 h-12 border-4 border-[var(--color-accent)]/20 border-t-[var(--color-accent)]  animate-spin" />
           </div>
         </div>
       </section>
@@ -93,7 +93,7 @@ export default function CertificateDetail() {
             <span>Back</span>
           </button>
           
-          <div className="text-center text-gray-400 py-20 bg-gradient-to-b from-[#1e1e1e] to-[#181818] rounded-2xl border border-[#2a2a2a]">
+          <div className="text-center text-gray-400 py-20 bg-gradient-to-b from-[#1e1e1e] to-[#181818]  border border-[#2a2a2a]">
             <FaCertificate className="text-6xl mx-auto mb-4 text-gray-600" />
             <p className="text-2xl mb-2">Certificate Not Found</p>
             <p className="text-gray-500">The certificate you're looking for doesn't exist.</p>
@@ -114,18 +114,18 @@ export default function CertificateDetail() {
           <span>Back to Certificates</span>
         </button>
 
-        <div className="bg-gradient-to-b from-[#1e1e1e] to-[#181818] rounded-2xl border border-[#2a2a2a] overflow-hidden">
+        <div className="bg-gradient-to-b from-[#1e1e1e] to-[#181818]  border border-[#2a2a2a] overflow-hidden">
           {certificate.image && (
             <div className="relative w-full h-[400px] bg-[#0a0a0a] flex items-center justify-center p-8">
               {!imageError ? (
                 <img
                   src={getImagePath(certificate.image)}
                   alt={certificate.title}
-                  className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                  className="max-w-full max-h-full object-contain  shadow-2xl"
                   onError={() => setImageError(true)}
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center rounded-lg">
+                <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center ">
                   <div className="text-center">
                     <FaCertificate className="text-8xl text-gray-600 block mx-auto mb-4" />
                     <span className="text-sm text-gray-500">Certificate image not available</span>
@@ -144,7 +144,7 @@ export default function CertificateDetail() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {certificate.issuer && (
-                <div className="bg-[#242424] rounded-xl p-4 border border-[#323232]">
+                <div className="bg-[#242424]  p-4 border border-[#323232]">
                   <p className="text-xs text-gray-500 mb-1">Issuer</p>
                   <p className="text-sm text-white flex items-center gap-2">
                     <FaBuilding className="text-[var(--color-accent)]" />
@@ -154,7 +154,7 @@ export default function CertificateDetail() {
               )}
 
               {certificate.date && (
-                <div className="bg-[#242424] rounded-xl p-4 border border-[#323232]">
+                <div className="bg-[#242424]  p-4 border border-[#323232]">
                   <p className="text-xs text-gray-500 mb-1">Issued Date</p>
                   <p className="text-sm text-white flex items-center gap-2">
                     <FaRegCalendarAlt className="text-[var(--color-accent)]" />
@@ -182,7 +182,7 @@ export default function CertificateDetail() {
                   {certificate.category.map((cat, index) => (
                     <span
                       key={index}
-                      className="bg-[#242424] border border-[#323232] text-gray-300 px-4 py-2 rounded-lg text-sm hover:border-[var(--color-accent)]/20 transition-colors flex items-center gap-2"
+                      className="bg-[#242424] border border-[#323232] text-gray-300 px-4 py-2  text-sm hover:border-[var(--color-accent)]/20 transition-colors flex items-center gap-2"
                     >
                       {getCategoryIcon(cat)}
                       {cat}
