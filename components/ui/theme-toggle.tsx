@@ -11,27 +11,10 @@ interface ThemeToggleProps {
   showLabel?: boolean;
 }
 
-// Pre-computed circular chain links for BASE_RADIUS 400
-const BASE_RADIUS = 400;
-const NUM_LINKS = 72;
-
-const CHAIN_LINKS = Array.from({ length: NUM_LINKS }, (_, i) => {
-  const angle = (i / NUM_LINKS) * 2 * Math.PI;
-  const deg = (angle * 180) / Math.PI + 90;
-  const x = BASE_RADIUS * Math.cos(angle);
-  const y = BASE_RADIUS * Math.sin(angle);
-  const isAlt = i % 2 === 0;
-  return { x, y, deg, isAlt };
-});
-
 export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
-  const [transitionData, setTransitionData] = React.useState<{
-    x: number;
-    y: number;
-    maxScale: number;
-  } | null>(null);
+  const [isGlitching, setIsGlitching] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
@@ -52,8 +35,10 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
 
   const isDark = resolvedTheme === "dark";
 
-  const handleToggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleToggleTheme = () => {
     const nextTheme = isDark ? "light" : "dark";
+
+    setIsGlitching(true);
 
     if (
       typeof document === "undefined" ||
@@ -61,46 +46,17 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
       setTheme(nextTheme);
+      setTimeout(() => setIsGlitching(false), 280);
       return;
     }
-
-    const button = event.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
-    const maxScale = (endRadius * 1.06) / BASE_RADIUS;
-
-    setTransitionData({ x, y, maxScale });
 
     const transition = (document as any).startViewTransition(() => {
       setTheme(nextTheme);
     });
 
-    transition.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration: 480,
-          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-          pseudoElement: "::view-transition-new(root)",
-        }
-      );
+    transition.finished.finally(() => {
+      setTimeout(() => setIsGlitching(false), 80);
     });
-
-    setTimeout(() => {
-      setTransitionData(null);
-    }, 550);
   };
 
   return (
@@ -126,136 +82,68 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
         )}
       </Button>
 
-      {/* Expanding Chain Frame Transition Overlay */}
-      {transitionData && (
+      {/* Screen Glitch & Scanline Overlay */}
+      {isGlitching && (
         <div
           aria-hidden="true"
           className="fixed inset-0 pointer-events-none z-[10000] overflow-hidden select-none"
         >
           <style>{`
-            @keyframes chain-ring-expand {
+            @keyframes glitch-scanlines {
               0% {
-                transform: translate3d(${transitionData.x}px, ${transitionData.y}px, 0) scale(0) rotate(0deg);
-                opacity: 0.95;
+                transform: translateY(-100%);
+                opacity: 0.6;
               }
-              75% {
-                opacity: 0.9;
+              50% {
+                opacity: 0.8;
               }
               100% {
-                transform: translate3d(${transitionData.x}px, ${transitionData.y}px, 0) scale(${transitionData.maxScale}) rotate(30deg);
+                transform: translateY(100%);
                 opacity: 0;
               }
             }
+            @keyframes glitch-flash {
+              0%, 100% { opacity: 0; }
+              20% { opacity: 0.15; }
+              40% { opacity: 0.05; }
+              60% { opacity: 0.2; }
+              80% { opacity: 0.08; }
+            }
+            @keyframes glitch-line-1 {
+              0% { top: 12%; height: 3px; transform: scaleX(0); opacity: 0; }
+              30% { top: 28%; height: 8px; transform: scaleX(1); opacity: 0.8; background: rgba(56, 189, 248, 0.4); }
+              70% { top: 64%; height: 4px; transform: scaleX(1); opacity: 0.6; background: rgba(239, 68, 68, 0.4); }
+              100% { top: 88%; height: 2px; transform: scaleX(0); opacity: 0; }
+            }
+            @keyframes glitch-line-2 {
+              0% { top: 75%; height: 4px; transform: scaleX(0); opacity: 0; }
+              40% { top: 42%; height: 12px; transform: scaleX(1); opacity: 0.7; background: rgba(239, 68, 68, 0.35); }
+              80% { top: 18%; height: 6px; transform: scaleX(1); opacity: 0.5; background: rgba(56, 189, 248, 0.35); }
+              100% { top: 5%; height: 2px; transform: scaleX(0); opacity: 0; }
+            }
           `}</style>
-          <svg
-            className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 overflow-visible"
-            style={{
-              width: `${BASE_RADIUS * 2}px`,
-              height: `${BASE_RADIUS * 2}px`,
-              transformOrigin: "center center",
-              animation: "chain-ring-expand 0.48s cubic-bezier(0.4, 0, 0.2, 1) forwards",
-            }}
-            viewBox={`-${BASE_RADIUS} -${BASE_RADIUS} ${BASE_RADIUS * 2} ${BASE_RADIUS * 2}`}
-          >
-            <defs>
-              <linearGradient id="chainRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="25%" stopColor="#d1d5db" />
-                <stop offset="50%" stopColor="#6b7280" />
-                <stop offset="75%" stopColor="#e5e7eb" />
-                <stop offset="100%" stopColor="#ffffff" />
-              </linearGradient>
 
-              <linearGradient id="chainRingDark" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#1f2937" />
-                <stop offset="50%" stopColor="#4b5563" />
-                <stop offset="100%" stopColor="#1f2937" />
-              </linearGradient>
+          {/* CRT / Scanlines Flash */}
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.25)_51%)] bg-[length:100%_4px] mix-blend-overlay"
+            style={{ animation: "glitch-scanlines 0.28s linear forwards" }}
+          />
 
-              <filter id="chainRingGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2.5" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
+          {/* Digital Noise / Flash Strobe */}
+          <div
+            className="absolute inset-0 bg-cyan-400/10 mix-blend-screen"
+            style={{ animation: "glitch-flash 0.28s steps(2, start) forwards" }}
+          />
 
-            {/* Subtle Guide Ring */}
-            <circle
-              r={BASE_RADIUS}
-              fill="none"
-              stroke="url(#chainRingGrad)"
-              strokeWidth="2"
-              opacity="0.3"
-            />
-
-            {/* Interlocking Chain Links around perimeter */}
-            {CHAIN_LINKS.map((link, i) => (
-              <g
-                key={i}
-                transform={`translate(${link.x}, ${link.y}) rotate(${link.deg})`}
-                filter="url(#chainRingGlow)"
-              >
-                {link.isAlt ? (
-                  // Front facing metallic link
-                  <g>
-                    <rect
-                      x="-14"
-                      y="-7"
-                      width="28"
-                      height="14"
-                      rx="5"
-                      fill="none"
-                      stroke="url(#chainRingGrad)"
-                      strokeWidth="2.8"
-                    />
-                    <rect
-                      x="-10"
-                      y="-3.5"
-                      width="20"
-                      height="7"
-                      rx="3.5"
-                      fill="none"
-                      stroke="#ffffff"
-                      strokeWidth="0.7"
-                      opacity="0.9"
-                    />
-                  </g>
-                ) : (
-                  // Side interlocking link
-                  <g>
-                    <rect
-                      x="-12"
-                      y="-3"
-                      width="24"
-                      height="6"
-                      rx="3"
-                      fill="url(#chainRingDark)"
-                      stroke="url(#chainRingGrad)"
-                      strokeWidth="1.4"
-                    />
-                  </g>
-                )}
-              </g>
-            ))}
-
-            {/* Y2K 4-Point Sparkles on Cardinal Points */}
-            {[0, 90, 180, 270].map((deg, i) => {
-              const rad = (deg * Math.PI) / 180;
-              const sx = BASE_RADIUS * Math.cos(rad);
-              const sy = BASE_RADIUS * Math.sin(rad);
-              return (
-                <g key={i} transform={`translate(${sx}, ${sy})`}>
-                  <path
-                    d="M 0,-14 Q 0,0 14,0 Q 0,0 0,14 Q 0,0 -14,0 Q 0,0 0,-14 Z"
-                    fill="url(#chainRingGrad)"
-                  />
-                  <circle r="2.5" fill="#ffffff" />
-                </g>
-              );
-            })}
-          </svg>
+          {/* Glitch Slicing Lines */}
+          <div
+            className="absolute left-0 right-0 shadow-xs"
+            style={{ animation: "glitch-line-1 0.28s ease-in-out forwards" }}
+          />
+          <div
+            className="absolute left-0 right-0 shadow-xs"
+            style={{ animation: "glitch-line-2 0.28s ease-in-out forwards" }}
+          />
         </div>
       )}
     </>
