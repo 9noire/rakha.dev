@@ -12,18 +12,18 @@ interface CertificateCardProps {
 
 export function CertificateCard({ certificate, className }: CertificateCardProps) {
   return (
-    <div className={cn("space-y-1.5 group", className)}>
-      <div className="flex items-start justify-between gap-2.5">
-        <div className="space-y-1 pr-1 flex-1">
+    <div className={cn("space-y-1 group", className)}>
+      <div className="flex items-start justify-between gap-2">
+        <div className="space-y-0.5 pr-1 flex-1">
           {/* Title & category badges */}
-          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1.5 sm:gap-2">
-            <h3 className="font-serif text-base sm:text-lg font-medium text-foreground leading-snug">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-2">
+            <h3 className="font-serif text-sm sm:text-lg font-medium text-foreground leading-snug">
               {certificate.title}
             </h3>
             {certificate.category && certificate.category.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {certificate.category.map((cat) => (
-                  <Badge key={cat} variant="subtle" className="text-[11px] sm:text-xs px-2 py-0.5">
+                  <Badge key={cat} variant="subtle" className="text-[10px] sm:text-xs px-1.5 py-0.2 sm:px-2 sm:py-0.5">
                     {cat}
                   </Badge>
                 ))}
@@ -31,7 +31,7 @@ export function CertificateCard({ certificate, className }: CertificateCardProps
             )}
           </div>
 
-          <p className="text-xs sm:text-sm text-muted-foreground font-serif">
+          <p className="text-[11px] sm:text-sm text-muted-foreground font-serif">
             {certificate.issuer}
             {certificate.date ? ` • ${certificate.date}` : ""}
           </p>
@@ -46,13 +46,13 @@ export function CertificateCard({ certificate, className }: CertificateCardProps
             title="View Credential"
             aria-label="View Credential"
           >
-            <ExternalLink className="h-3.5 w-3.5" />
+            <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
           </Link>
         )}
       </div>
 
       {certificate.details && (
-        <p className="text-xs sm:text-sm text-muted-foreground/85 leading-relaxed font-sans pt-0.5 max-w-3xl">
+        <p className="text-[11px] sm:text-sm text-muted-foreground/85 leading-relaxed font-sans pt-0.5 max-w-3xl line-clamp-2 sm:line-clamp-none">
           <NotionText segments={certificate.detailsSegments} fallback={certificate.details} />
         </p>
       )}
