@@ -11,7 +11,7 @@ export const revalidate = 60;
 export default async function Home() {
   return (
     <MainLayout>
-      <div className="space-y-16 sm:space-y-24">
+      <div className="space-y-12 sm:space-y-24">
         <HeroSection />
         <SkillsSection />
         <ProjectsSection />

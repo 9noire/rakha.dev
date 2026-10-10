@@ -3,51 +3,106 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #f7f8fa;
-  --foreground: #1e2025;
+  --background: #eaecef;
+  --foreground: #1c1e22;
 
-  --card: #ffffff;
-  --card-foreground: #1e2025;
+  --card: #f2f4f7;
+  --card-foreground: #1c1e22;
 
-  --primary: #222429;
-  --primary-foreground: #f7f8fa;
+  --primary: #1c1e22;
+  --primary-foreground: #eaecef;
 
-  --secondary: #eceef2;
-  --secondary-foreground: #222429;
+  --secondary: #dde0e5;
+  --secondary-foreground: #1c1e22;
 
-  --muted: #eceef2;
-  --muted-foreground: #666a75;
+  --muted: #dde0e5;
+  --muted-foreground: #5c606a;
 
   --destructive: #dc2626;
-  --destructive-foreground: #f7f8fa;
+  --destructive-foreground: #eaecef;
 
-  --border: #e1e3e8;
-  --ring: #222429;
+  --border: #d0d4dc;
+  --ring: #1c1e22;
 
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: #141517;
-  --foreground: #dedfe3;
+  --background: #121315;
+  --foreground: #c2c5cd;
 
-  --card: #1a1b1f;
-  --card-foreground: #dedfe3;
+  --card: #17181c;
+  --card-foreground: #c2c5cd;
 
-  --primary: #dedfe3;
-  --primary-foreground: #141517;
+  --primary: #c2c5cd;
+  --primary-foreground: #121315;
 
-  --secondary: #222429;
-  --secondary-foreground: #dedfe3;
+  --secondary: #1c1e22;
+  --secondary-foreground: #c2c5cd;
 
-  --muted: #222429;
-  --muted-foreground: #9ca0ab;
+  --muted: #1c1e22;
+  --muted-foreground: #888d98;
 
   --destructive: #991b1b;
-  --destructive-foreground: #dedfe3;
+  --destructive-foreground: #c2c5cd;
 
-  --border: #2a2c33;
-  --ring: #9ca0ab;
+  --border: #24262c;
+  --ring: #888d98;
+}
+
+/* Clean Subtle Micro-Glitch View Transition for Theme Toggle */
+@keyframes subtle-glitch-out {
+  0% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  30% {
+    clip-path: inset(20% 0 55% 0);
+    transform: translate(-3px, 0);
+    opacity: 0.85;
+  }
+  60% {
+    clip-path: inset(55% 0 20% 0);
+    transform: translate(3px, 0);
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+@keyframes subtle-glitch-in {
+  0% {
+    opacity: 0;
+    clip-path: inset(35% 0 35% 0);
+    transform: translate(3px, 0);
+  }
+  40% {
+    opacity: 0.85;
+    clip-path: inset(15% 0 65% 0);
+    transform: translate(-2px, 0);
+  }
+  75% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root) {
+  animation: 0.35s cubic-bezier(0.2, 0, 0, 1) both subtle-glitch-out;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: 0.35s cubic-bezier(0.2, 0, 0, 1) both subtle-glitch-in;
+  mix-blend-mode: normal;
 }
 
 @theme inline {

@@ -29,13 +29,11 @@ export default async function CertificatesPage() {
             </Link>
           </Button>
 
-          <SectionHeading
-            title="All Certifications"
-          />
+          <SectionHeading title="All Certifications" />
         </div>
 
-        {/* Reusable Certificate Cards List */}
-        <div className="grid grid-cols-1 gap-3">
+        {/* Clean Certificate List */}
+        <div className="space-y-6 sm:space-y-8">
           {certificates.map((cert) => (
             <CertificateCard key={cert.id} certificate={cert} />
           ))}

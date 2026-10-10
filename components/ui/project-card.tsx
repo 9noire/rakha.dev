@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { ProjectItem } from "@/lib/notion";
@@ -15,10 +13,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
-    <Card className={cn("p-4 sm:p-6 space-y-3 sm:space-y-4 transition-colors duration-150", className)}>
-      {/* Card Header: Title & Roles + Top-right External Action Links */}
-      <div className="flex items-start justify-between gap-2.5">
-        <div className="space-y-1 pr-1">
+    <div className={cn("space-y-2 group", className)}>
+      {/* Header: Title, Role, Type & External Action Links */}
+      <div className="flex items-start justify-between gap-2">
+        <div className="space-y-0.5 pr-1">
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <Link
               href={`/projects/${project.id}`}
@@ -26,16 +24,21 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             >
               {project.title}
             </Link>
+            {project.type && (
+              <span className="text-[10px] sm:text-[11px] font-sans px-1.5 py-0.2 rounded border border-border/50 text-muted-foreground bg-secondary/40">
+                {project.type}
+              </span>
+            )}
           </div>
           {project.role && (
-            <p className="text-xs sm:text-sm text-muted-foreground font-serif">
+            <p className="text-[11px] sm:text-sm text-muted-foreground font-serif">
               {project.role}
             </p>
           )}
         </div>
 
         {/* Action Links (GitHub & Live Demo) */}
-        <div className="flex items-center gap-1.5 shrink-0 mt-0.5">
+        <div className="flex items-center gap-1 shrink-0 mt-0.5">
           {project.github && (
             <Link
               href={project.github}
@@ -45,7 +48,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               aria-label="View Source Code"
               title="GitHub Source"
             >
-              <FaGithub className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <FaGithub className="h-3 w-3 sm:h-4 sm:w-4" />
             </Link>
           )}
           {project.link && (
@@ -57,25 +60,25 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               aria-label="View Live Demo"
               title="Live Demo"
             >
-              <FaGlobe className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <FaGlobe className="h-3 w-3 sm:h-4 sm:w-4" />
             </Link>
           )}
         </div>
       </div>
 
-      {/* Description */}
-      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-sans">
+      {/* Description - Concise line-clamp on mobile */}
+      <p className="text-xs sm:text-base text-muted-foreground leading-relaxed font-sans max-w-3xl line-clamp-2 sm:line-clamp-none">
         <NotionText segments={project.descriptionSegments} fallback={project.description} />
       </p>
 
-      {/* Card Footer: Tech Stack Chips & Details Button */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 pt-2.5 sm:pt-3 border-t border-border/40">
+      {/* Footer: Tech Stack Chips & Details Link */}
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-0.5">
         {project.techStack && project.techStack.length > 0 ? (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="text-[11px] font-serif px-2 py-0.5 rounded border border-border/40 text-muted-foreground/80 bg-secondary/30"
+                className="text-[10px] sm:text-[11px] font-serif px-1.5 sm:px-2 py-0.5 rounded border border-border/40 text-muted-foreground/80 bg-secondary/30"
               >
                 {tech}
               </span>
@@ -89,14 +92,14 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           asChild
           variant="ghost"
           size="sm"
-          className="gap-1 text-xs h-7 px-2 text-muted-foreground hover:text-foreground ml-auto shrink-0"
+          className="gap-1 text-[11px] sm:text-xs h-6 sm:h-7 px-1.5 sm:px-2 text-muted-foreground hover:text-foreground ml-auto shrink-0 -mr-1.5"
         >
           <Link href={`/projects/${project.id}`}>
             <span>Details</span>
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
           </Link>
         </Button>
       </div>
-    </Card>
+    </div>
   );
 }

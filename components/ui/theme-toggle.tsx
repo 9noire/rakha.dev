@@ -12,7 +12,7 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -34,11 +34,28 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
 
   const isDark = resolvedTheme === "dark";
 
+  const handleToggleTheme = () => {
+    const nextTheme = isDark ? "light" : "dark";
+
+    if (
+      typeof document === "undefined" ||
+      !(document as any).startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    (document as any).startViewTransition(() => {
+      setTheme(nextTheme);
+    });
+  };
+
   return (
     <Button
       variant="ghost"
       size={showLabel ? "sm" : "icon"}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={handleToggleTheme}
       className={cn(
         "h-8 text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors",
         !showLabel && "w-8",

@@ -17,11 +17,9 @@ export async function CertificatesSection() {
 
   return (
     <section id="certificates" className="space-y-8">
-      <SectionHeading
-        title="Certifications"
-      />
+      <SectionHeading title="Certifications" />
 
-      <div className="grid grid-cols-1 gap-3">
+      <div className="space-y-6 sm:space-y-8">
         {featuredCertificates.map((cert) => (
           <CertificateCard key={cert.id} certificate={cert} />
         ))}

@@ -17,13 +17,9 @@ export async function ProjectsSection() {
 
   return (
     <section id="projects" className="space-y-8">
-      <div className="flex items-baseline justify-between">
-        <SectionHeading
-          title="Projects"
-        />
-      </div>
+      <SectionHeading title="Projects" />
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="space-y-8 sm:space-y-10">
         {featuredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

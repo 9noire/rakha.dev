@@ -86,6 +86,8 @@ export interface ProfileItem {
   tagline: string;
   taglineSegments: NotionTextSegment[];
   banner: string;
+  bannerDark: string;
+  bannerLight: string;
   bio: string;
   bioSegments: NotionTextSegment[];
   resumeUrl: string;
@@ -131,7 +133,37 @@ export async function getProfileFromNotion(): Promise<ProfileItem | null> {
     const taglineSegments = parseRichTextSegments(taglineRaw);
     const tagline = taglineSegments.map((t) => t.plain_text).join("") || "Software Engineer Wannabe.";
 
-    const banner = props.Banner?.url || props.banner?.url || "/images/banner.jpeg";
+    const extractUrlProp = (prop: any): string => {
+      if (!prop) return "";
+      if (prop.type === "url" && prop.url) return prop.url;
+      if (prop.type === "rich_text" && prop.rich_text) {
+        return prop.rich_text.map((t: any) => t.plain_text).join("").trim();
+      }
+      if (prop.type === "files" && prop.files && prop.files.length > 0) {
+        return prop.files[0]?.file?.url || prop.files[0]?.external?.url || "";
+      }
+      return "";
+    };
+
+    const bannerDarkRaw = extractUrlProp(
+      props["Banner Dark"] ||
+      props.bannerDark ||
+      props.BannerDark ||
+      props["banner_dark"]
+    );
+
+    const bannerLightRaw = extractUrlProp(
+      props["Banner Light"] ||
+      props.bannerLight ||
+      props.BannerLight ||
+      props["banner_light"]
+    );
+
+    const defaultBanner = extractUrlProp(props.Banner || props.banner) || "/images/banner.jpeg";
+
+    const bannerDark = bannerDarkRaw || defaultBanner;
+    const bannerLight = bannerLightRaw || defaultBanner;
+    const banner = bannerDark || bannerLight || defaultBanner;
     
     const bioRaw = props.Bio?.rich_text || props.bio?.rich_text || [];
     const bioSegments = parseRichTextSegments(bioRaw);
@@ -145,6 +177,8 @@ export async function getProfileFromNotion(): Promise<ProfileItem | null> {
       tagline,
       taglineSegments,
       banner,
+      bannerDark,
+      bannerLight,
       bio,
       bioSegments,
       resumeUrl,

@@ -29,13 +29,11 @@ export default async function ProjectsPage() {
             </Link>
           </Button>
 
-          <SectionHeading
-            title="All Projects"
-          />
+          <SectionHeading title="All Projects" />
         </div>
 
-        {/* Reusable Project Cards Grid */}
-        <div className="grid grid-cols-1 gap-4">
+        {/* Clean Project List */}
+        <div className="space-y-8 sm:space-y-10">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
