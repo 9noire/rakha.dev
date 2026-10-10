@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getExperiencesFromNotion } from "@/lib/notion";
-import { ExperienceCard } from "@/components/ui/experience-card";
+import { ExperienceItemRow } from "@/components/ui/experience-item";
 
 export async function ExperiencesSection() {
   const experiences = await getExperiencesFromNotion();
@@ -13,9 +13,10 @@ export async function ExperiencesSection() {
     <section id="experience" className="space-y-8">
       <SectionHeading title="Experience" />
 
-      <div className="grid grid-cols-1 gap-3.5">
+      {/* Professional Timeline with vertical connector line */}
+      <div className="relative border-l border-border/70 ml-2.5 sm:ml-3 pl-6 sm:pl-8 space-y-9 sm:space-y-11">
         {experiences.map((exp) => (
-          <ExperienceCard key={exp.id} experience={exp} />
+          <ExperienceItemRow key={exp.id} experience={exp} />
         ))}
       </div>
     </section>
