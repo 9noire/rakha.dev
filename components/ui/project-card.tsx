@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { ProjectItem } from "@/lib/notion";
@@ -15,17 +13,22 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
-    <Card className={cn("p-4 sm:p-6 space-y-3 sm:space-y-4 transition-colors duration-150", className)}>
-      {/* Card Header: Title & Roles + Top-right External Action Links */}
+    <div className={cn("space-y-2.5 group", className)}>
+      {/* Header: Title, Role, Type & External Action Links */}
       <div className="flex items-start justify-between gap-2.5">
         <div className="space-y-1 pr-1">
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Link
               href={`/projects/${project.id}`}
-              className="font-serif text-base sm:text-xl font-medium text-foreground hover:underline underline-offset-4 decoration-border leading-snug"
+              className="font-serif text-lg sm:text-xl font-medium text-foreground hover:underline underline-offset-4 decoration-border leading-snug"
             >
               {project.title}
             </Link>
+            {project.type && (
+              <span className="text-[11px] font-sans px-2 py-0.5 rounded border border-border/50 text-muted-foreground bg-secondary/40">
+                {project.type}
+              </span>
+            )}
           </div>
           {project.role && (
             <p className="text-xs sm:text-sm text-muted-foreground font-serif">
@@ -64,12 +67,12 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       </div>
 
       {/* Description */}
-      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-sans">
+      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-sans max-w-3xl">
         <NotionText segments={project.descriptionSegments} fallback={project.description} />
       </p>
 
-      {/* Card Footer: Tech Stack Chips & Details Button */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 pt-2.5 sm:pt-3 border-t border-border/40">
+      {/* Footer: Tech Stack Chips & Details Link */}
+      <div className="flex flex-wrap items-center justify-between gap-2.5 pt-1">
         {project.techStack && project.techStack.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
             {project.techStack.map((tech) => (
@@ -89,7 +92,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           asChild
           variant="ghost"
           size="sm"
-          className="gap-1 text-xs h-7 px-2 text-muted-foreground hover:text-foreground ml-auto shrink-0"
+          className="gap-1 text-xs h-7 px-2 text-muted-foreground hover:text-foreground ml-auto shrink-0 -mr-2"
         >
           <Link href={`/projects/${project.id}`}>
             <span>Details</span>
@@ -97,6 +100,6 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           </Link>
         </Button>
       </div>
-    </Card>
+    </div>
   );
 }
