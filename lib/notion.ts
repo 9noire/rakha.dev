@@ -7,8 +7,24 @@ const socialsDbId = process.env.NOTION_SOCIALS_DB_ID || process.env.NOTION_SOCIA
 const skillsDbId = process.env.NOTION_SKILLS_DB_ID || process.env.NOTION_SKILLS_DB;
 const projectsDbId = process.env.NOTION_PROJECTS_DB_ID || process.env.NOTION_PROJECTS_DB;
 const certificatesDbId = process.env.NOTION_CERTIFICATES_DB_ID || process.env.NOTION_CERTIFICATES_DB;
+const experiencesDbId = process.env.NOTION_EXPERIENCES_DB_ID || process.env.NOTION_EXPERIENCES_DB || process.env.NOTION_EXPERIENCE_DB_ID;
 
 export const notion = notionApiKey ? new Client({ auth: notionApiKey }) : null;
+
+export interface ExperienceItem {
+  id: string;
+  role: string;
+  company: string;
+  type: string;
+  period: string;
+  location: string;
+  description: string;
+  descriptionSegments?: NotionTextSegment[];
+  techStack: string[];
+  link: string;
+  order: number;
+  published: boolean;
+}
 
 export interface SkillItem {
   id: string;
@@ -408,6 +424,135 @@ export async function getCertificatesFromNotion(): Promise<CertificateItem[]> {
       .filter((c) => c.title && c.published);
   } catch (error: any) {
     console.error("Error fetching certificates from Notion:", error?.message || error);
+    return [];
+  }
+}
+
+function formatPeriod(periodProp: any): string {
+  if (!periodProp) return "";
+  if (periodProp.type === "date" && periodProp.date) {
+    const start = periodProp.date.start;
+    const end = periodProp.date.end;
+    if (!start) return "";
+    
+    const formatDate = (dateStr: string) => {
+      const parts = dateStr.split("-");
+      if (parts.length >= 2) {
+        const year = parts[0];
+        const monthIndex = parseInt(parts[1], 10) - 1;
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const monthName = months[monthIndex] || parts[1];
+        return `${monthName} ${year}`;
+      }
+      return dateStr;
+    };
+
+    const startFormatted = formatDate(start);
+    if (end) {
+      const endFormatted = formatDate(end);
+      return `${startFormatted} – ${endFormatted}`;
+    }
+    return `${startFormatted} – Present`;
+  }
+
+  if (periodProp.type === "rich_text" && periodProp.rich_text) {
+    return periodProp.rich_text.map((t: any) => t.plain_text).join("").trim();
+  }
+
+  return "";
+}
+
+export async function getExperiencesFromNotion(): Promise<ExperienceItem[]> {
+  if (!notion || !experiencesDbId) {
+    console.warn("Notion API Key or Experiences Database ID missing in env.local.");
+    return [];
+  }
+
+  try {
+    let rawResults: any[] = [];
+
+    if ("dataSources" in notion && typeof (notion as any).dataSources?.query === "function") {
+      const response = await (notion as any).dataSources.query({
+        data_source_id: experiencesDbId,
+      });
+      rawResults = response.results;
+    } else if ("databases" in notion && typeof (notion as any).databases?.query === "function") {
+      const response = await (notion as any).databases.query({
+        database_id: experiencesDbId,
+      });
+      rawResults = response.results;
+    }
+
+    return rawResults
+      .map((page: any) => {
+        const props = page.properties;
+        const role =
+          props.Role?.title?.[0]?.plain_text ||
+          props.role?.title?.[0]?.plain_text ||
+          props.Title?.title?.[0]?.plain_text ||
+          props.Position?.title?.[0]?.plain_text ||
+          "";
+
+        const company =
+          props.Company?.rich_text?.[0]?.plain_text ||
+          props.company?.rich_text?.[0]?.plain_text ||
+          props.Company?.select?.name ||
+          "";
+
+        const type =
+          props.Type?.select?.name ||
+          props.type?.select?.name ||
+          props.Type?.rich_text?.[0]?.plain_text ||
+          "";
+
+        const period = formatPeriod(props.Period || props.period || props.Date || props.date);
+
+        const location =
+          props.Location?.rich_text?.[0]?.plain_text ||
+          props.location?.rich_text?.[0]?.plain_text ||
+          props.Location?.select?.name ||
+          "";
+
+        const descRaw =
+          props.Description?.rich_text ||
+          props.description?.rich_text ||
+          props.Details?.rich_text ||
+          props.details?.rich_text ||
+          [];
+        const descriptionSegments = parseRichTextSegments(descRaw);
+        const description = descriptionSegments.map((t) => t.plain_text).join("") || "";
+
+        const techStack = (
+          props.TechStack?.multi_select ||
+          props.techStack?.multi_select ||
+          props.Skills?.multi_select ||
+          props.skills?.multi_select ||
+          []
+        ).map((t: any) => t.name);
+
+        const link = props.Link?.url || props.link?.url || props.CompanyUrl?.url || "";
+        const published = props.Published?.checkbox ?? props.published?.checkbox ?? true;
+        const order = props.Order?.number ?? props.order?.number ?? 99;
+
+        return {
+          id: page.id,
+          role,
+          company,
+          type,
+          period,
+          location,
+          description,
+          descriptionSegments,
+          techStack,
+          link,
+          order,
+          published,
+        };
+      })
+      .filter((e) => e.role && e.published)
+      .sort((a, b) => a.order - b.order);
+  } catch (error: any) {
+    console.error("Error fetching experiences from Notion:", error?.message || error);
     return [];
   }
 }

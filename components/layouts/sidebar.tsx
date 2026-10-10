@@ -8,6 +8,7 @@ import {
   Code2,
   FolderGit2,
   Award,
+  Briefcase,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +17,7 @@ const navItems = [
   { name: "Skills", href: "/#skills", sectionId: "skills", icon: Code2 },
   { name: "Projects", href: "/#projects", sectionId: "projects", icon: FolderGit2 },
   { name: "Certificates", href: "/#certificates", sectionId: "certificates", icon: Award },
+  { name: "Experience", href: "/#experience", sectionId: "experience", icon: Briefcase },
 ];
 
 export function Sidebar() {

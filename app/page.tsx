@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { CertificatesSection } from "@/components/sections/certificates-section";
+import { ExperiencesSection } from "@/components/sections/experiences-section";
 
 // Revalidate Notion data every 60 seconds (ISR)
 export const revalidate = 60;
@@ -15,6 +16,7 @@ export default async function Home() {
         <SkillsSection />
         <ProjectsSection />
         <CertificatesSection />
+        <ExperiencesSection />
       </div>
     </MainLayout>
   );
