@@ -86,8 +86,6 @@ export interface ProfileItem {
   tagline: string;
   taglineSegments: NotionTextSegment[];
   banner: string;
-  bannerDark: string;
-  bannerLight: string;
   bio: string;
   bioSegments: NotionTextSegment[];
   resumeUrl: string;
@@ -145,25 +143,7 @@ export async function getProfileFromNotion(): Promise<ProfileItem | null> {
       return "";
     };
 
-    const bannerDarkRaw = extractUrlProp(
-      props["Banner Dark"] ||
-      props.bannerDark ||
-      props.BannerDark ||
-      props["banner_dark"]
-    );
-
-    const bannerLightRaw = extractUrlProp(
-      props["Banner Light"] ||
-      props.bannerLight ||
-      props.BannerLight ||
-      props["banner_light"]
-    );
-
-    const defaultBanner = extractUrlProp(props.Banner || props.banner) || "/images/banner.jpeg";
-
-    const bannerDark = bannerDarkRaw || defaultBanner;
-    const bannerLight = bannerLightRaw || defaultBanner;
-    const banner = bannerDark || bannerLight || defaultBanner;
+    const banner = extractUrlProp(props.Banner || props.banner) || "/images/banner.jpeg";
     
     const bioRaw = props.Bio?.rich_text || props.bio?.rich_text || [];
     const bioSegments = parseRichTextSegments(bioRaw);
@@ -177,8 +157,6 @@ export async function getProfileFromNotion(): Promise<ProfileItem | null> {
       tagline,
       taglineSegments,
       banner,
-      bannerDark,
-      bannerLight,
       bio,
       bioSegments,
       resumeUrl,

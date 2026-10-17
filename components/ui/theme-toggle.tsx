@@ -34,7 +34,7 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
 
   const isDark = resolvedTheme === "dark";
 
-  const handleToggleTheme = () => {
+  const handleToggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
     const nextTheme = isDark ? "light" : "dark";
 
     if (
@@ -46,8 +46,34 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
       return;
     }
 
-    (document as any).startViewTransition(() => {
+    const button = event.currentTarget;
+    const rect = button.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = (document as any).startViewTransition(() => {
       setTheme(nextTheme);
+    });
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 380,
+          easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
     });
   };
 
@@ -63,13 +89,22 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
       )}
       aria-label="Toggle theme"
     >
-      {isDark ? (
-        <Sun className="h-4 w-4 transition-transform rotate-0 scale-100" />
-      ) : (
-        <Moon className="h-4 w-4 transition-transform rotate-0 scale-100" />
-      )}
+      <div className="relative h-4 w-4 flex items-center justify-center">
+        <Sun
+          className={cn(
+            "h-4 w-4 absolute transition-all duration-300",
+            isDark ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
+          )}
+        />
+        <Moon
+          className={cn(
+            "h-4 w-4 absolute transition-all duration-300",
+            isDark ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
+          )}
+        />
+      </div>
       {showLabel && (
-        <span className="text-xs">{isDark ? "Light Mode" : "Dark Mode"}</span>
+        <span className="text-xs ml-2">{isDark ? "Light Mode" : "Dark Mode"}</span>
       )}
     </Button>
   );

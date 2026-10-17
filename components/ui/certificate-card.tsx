@@ -52,7 +52,7 @@ export function CertificateCard({ certificate, className }: CertificateCardProps
       </div>
 
       {certificate.details && (
-        <p className="text-[11px] sm:text-sm text-muted-foreground/85 leading-relaxed font-sans pt-0.5 max-w-3xl line-clamp-2 sm:line-clamp-none">
+        <p className="hidden sm:block text-xs sm:text-sm text-muted-foreground/85 leading-relaxed font-sans pt-0.5 max-w-3xl">
           <NotionText segments={certificate.detailsSegments} fallback={certificate.details} />
         </p>
       )}

@@ -50,59 +50,19 @@
   --ring: #888d98;
 }
 
-/* Clean Subtle Micro-Glitch View Transition for Theme Toggle */
-@keyframes subtle-glitch-out {
-  0% {
-    opacity: 1;
-    transform: translate(0);
-  }
-  30% {
-    clip-path: inset(20% 0 55% 0);
-    transform: translate(-3px, 0);
-    opacity: 0.85;
-  }
-  60% {
-    clip-path: inset(55% 0 20% 0);
-    transform: translate(3px, 0);
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(0);
-  }
-}
-
-@keyframes subtle-glitch-in {
-  0% {
-    opacity: 0;
-    clip-path: inset(35% 0 35% 0);
-    transform: translate(3px, 0);
-  }
-  40% {
-    opacity: 0.85;
-    clip-path: inset(15% 0 65% 0);
-    transform: translate(-2px, 0);
-  }
-  75% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    opacity: 1;
-  }
+/* Smooth Circular View Transition for Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 ::view-transition-old(root) {
-  animation: 0.35s cubic-bezier(0.2, 0, 0, 1) both subtle-glitch-out;
-  mix-blend-mode: normal;
+  z-index: 1;
 }
 
 ::view-transition-new(root) {
-  animation: 0.35s cubic-bezier(0.2, 0, 0, 1) both subtle-glitch-in;
-  mix-blend-mode: normal;
+  z-index: 9999;
 }
 
 @theme inline {
