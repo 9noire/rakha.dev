@@ -15,23 +15,14 @@ export async function HeroSection() {
 
   return (
     <section id="about" className="space-y-4 sm:space-y-6 pt-1 sm:pt-6">
-      {/* Top Cover Banner with Dynamic Theme Switching (Light vs Dark) */}
-      {(profile.bannerLight || profile.bannerDark || profile.banner) && (
+      {/* Top Cover Banner */}
+      {profile.banner && (
         <div className="relative w-full h-32 sm:h-52 md:h-60 rounded-xl overflow-hidden border border-border/70 bg-secondary/30 shadow-xs">
-          {profile.bannerLight && (
-            <img
-              src={profile.bannerLight}
-              alt={`${profile.name} Banner Light`}
-              className="w-full h-full object-cover object-center dark:hidden"
-            />
-          )}
-          {profile.bannerDark && (
-            <img
-              src={profile.bannerDark}
-              alt={`${profile.name} Banner Dark`}
-              className="w-full h-full object-cover object-center hidden dark:block"
-            />
-          )}
+          <img
+            src={profile.banner}
+            alt={`${profile.name} Banner`}
+            className="w-full h-full object-cover object-center"
+          />
         </div>
       )}
 
